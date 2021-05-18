@@ -14,7 +14,7 @@ export class Homepage extends React.Component {
                     <div className="step-text">
                         <h2>1</h2>
                         <div>
-                            <h3>Check the selection</h3>
+                            <h3>Check the beer selection</h3>
                             <p>We have quite some treats for you to taste! If you’re in doubt, read the specifications, aromas etc. before you make your decision. Remember: “There is no such thing as 1 beer!”</p>
                         </div>
                     </div>
