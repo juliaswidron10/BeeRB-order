@@ -1,0 +1,61 @@
+@use "../base/vars" as *;
+
+.homepage-header {
+  color: $black;
+  margin: 1rem 4rem 0 4rem;
+  h1 {
+    font-family: "Dela-Gothic-One-Regular";
+    font-size: 2rem;
+  }
+
+  p {
+    font-family: "Courier-Prime-Regular";
+    font-size: 1rem;
+  }
+}
+
+.steps-list {
+  margin: 2rem 3rem;
+  h2 {
+    font-family: "Courier-Prime-Bold";
+    font-size: 1rem;
+  }
+
+  h3 {
+    font-family: "Courier-Prime-Bold";
+    font-size: 1rem;
+  }
+
+  p {
+    font-family: "Courier-Prime-Regular";
+    font-size: 0.8rem;
+  }
+}
+
+.step-text {
+  display: grid;
+  grid-template-columns: 1fr 12fr;
+  background-color: $light-grey;
+  margin: 1rem;
+  padding: 1rem;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+  }
+}
+
+.step5-text {
+  display: grid;
+  grid-template-columns: 1fr 12fr;
+  //background-color: $light-grey;
+  margin: 1rem;
+  padding: 1rem;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+  }
+}
