@@ -2,20 +2,21 @@
 
 .homepage-header {
   color: $black;
-  margin: 1rem 4rem 0 4rem;
+  margin: 1rem 4rem;
   h1 {
     font-family: "Dela-Gothic-One-Regular";
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
 
   p {
     font-family: "Courier-Prime-Regular";
     font-size: 1rem;
+    margin: 0 4rem;
   }
 }
 
 .steps-list {
-  margin: 2rem 3rem;
+  margin: 2rem 3rem 0.5rem 3rem;
   h2 {
     font-family: "Courier-Prime-Bold";
     font-size: 1rem;
@@ -36,13 +37,16 @@
   display: grid;
   grid-template-columns: 1fr 12fr;
   background-color: $light-grey;
-  margin: 1rem;
-  padding: 1rem;
+  margin: 0.8rem;
+  padding: 0.8rem;
 
   div {
     display: flex;
     flex-direction: column;
     text-align: start;
+  }
+  p {
+    margin: 0;
   }
 }
 
@@ -50,8 +54,8 @@
   display: grid;
   grid-template-columns: 1fr 12fr;
   //background-color: $light-grey;
-  margin: 1rem;
-  padding: 1rem;
+  margin: 0.8rem;
+  padding: 0.8rem;
 
   div {
     display: flex;
