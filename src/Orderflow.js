@@ -61,7 +61,7 @@ function Orderflow() {
           <Step key={item.title} title={item.title} />
         ))}
       </Steps>
-      <div class="bullshit">
+      <div class="steps-content-container">
         {steps.map((item) => (
           <div className={`steps-content ${item.step !== current + 1}`}>{item.content}</div>
         ))}
