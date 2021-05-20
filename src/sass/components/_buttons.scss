@@ -1,1 +1,24 @@
 @use "../base/vars" as *;
+
+button {
+  font-size: 0.8rem;
+  text-decoration: none;
+  border: 2px solid $orange;
+  //letter-spacing: 2px;
+  background-color: transparent;
+  padding: 9px 16px 7px;
+  transition: all 0.3s ease-in;
+  cursor: pointer;
+}
+
+.btn-orange {
+  font-family: "Dela-Gothic-One-Regular", sans-serif;
+  background-color: $orange;
+  color: $black;
+}
+
+.btn-orange:hover {
+  font-family: "Dela-Gothic-One-Regular", sans-serif;
+  border: 2px solid $black;
+  background-color: $white;
+}

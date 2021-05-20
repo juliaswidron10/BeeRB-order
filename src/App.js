@@ -1,13 +1,12 @@
-import React from "react";
-import ReactDOM from "react-dom";
+//import logo from "./logo.svg";
 import "./App.scss";
 import "antd/dist/antd.css";
-import { Orderflow } from "./Orderflow.js";
+import { Homepage } from "./Homepage.js";
 
 function App() {
   return (
     <div className="App">
-      <Orderflow />
+      <Homepage />
     </div>
   );
 }
