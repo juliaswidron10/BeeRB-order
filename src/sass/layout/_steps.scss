@@ -1,0 +1,21 @@
+.ant-steps {
+  display: inline-block !important;
+  width: 200% !important;
+  margin-left: 22rem !important;
+}
+
+.ant-steps-item:first-of-type {
+  width: 30%;
+}
+
+.steps-content-container {
+  display: inline-block !important;
+  width: 200% !important;
+
+  .steps-content {
+    &:first-of-type {
+      width: 30%;
+      background: red;
+    }
+  }
+}
