@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import { Steps, Button, message } from "antd";
 import "./App.scss";
 import "antd/dist/antd.css";
@@ -44,6 +43,7 @@ function Orderflow() {
   const [current, setCurrent] = React.useState(0);
 
   function next() {
+    console.log("next clicked");
     const nextStep = current + 1;
     setCurrent(nextStep);
   }
@@ -61,7 +61,7 @@ function Orderflow() {
           <Step key={item.title} title={item.title} />
         ))}
       </Steps>
-      <div class="steps-content-container">
+      <div className="steps-content-container">
         {steps.map((item) => (
           <div className={`steps-content ${item.step !== current + 1}`}>{item.content}</div>
         ))}
@@ -87,9 +87,5 @@ function Orderflow() {
     </>
   );
 }
-
-//creating parent container and adding it to DOM
-// let stepsContentContainer = React.createElement("div", { className: "steps-content-container" });
-// document.getElementsByClassName(".App")[0].appendChild(stepsContentContainer);
 
 export { Orderflow };
