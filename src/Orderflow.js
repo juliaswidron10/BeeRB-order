@@ -15,27 +15,27 @@ const steps = [
   {
     step: 1,
     title: "Select your beer",
-    content: <Step1 />,
+    content: (next) => <Step1 next={next} />,
   },
   {
     step: 2,
     title: "Place your order",
-    content: <Step2 />,
+    content: (next) => <Step2 next={next} />,
   },
   {
     step: 3,
     title: "A bit of a patience",
-    content: <Step3 />,
+    content: (next) => <Step3 next={next} />,
   },
   {
     step: 4,
     title: "Pick up your order ",
-    content: <Step4 />,
+    content: (next) => <Step4 next={next} />,
   },
   {
     step: 5,
     title: "Enjoy and repeat",
-    content: <Step5 />,
+    content: (next) => <Step5 next={next} />,
   },
 ];
 
@@ -46,6 +46,9 @@ function Orderflow() {
     console.log("next clicked");
     const nextStep = current + 1;
     setCurrent(nextStep);
+    if (current === 1) {
+      document.getElementsByClassName("App")[0].classList.add("page-slide-to-left");
+    }
   }
 
   function prev() {
@@ -63,7 +66,7 @@ function Orderflow() {
       </Steps>
       <div className="steps-content-container">
         {steps.map((item) => (
-          <div className={`steps-content ${item.step !== current + 1}`}>{item.content}</div>
+          <div className={`steps-content ${item.step !== current + 1}`}>{item.content(next)}</div>
         ))}
       </div>
 
