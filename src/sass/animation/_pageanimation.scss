@@ -1,0 +1,13 @@
+.page-slide-to-left {
+  animation: page-slide-to-left ease-out 1.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes page-slide-to-left {
+  0% {
+    transform: translate(0%);
+  }
+  100% {
+    transform: translate(-100%);
+  }
+}

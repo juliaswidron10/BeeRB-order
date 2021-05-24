@@ -1,0 +1,22 @@
+@use "../base/vars" as *;
+
+.headers-container {
+  width: 200%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.homepage-header {
+  color: $black;
+  margin: 1rem 4rem;
+  h1 {
+    font-family: "Dela-Gothic-One-Regular";
+    font-size: 2.2rem;
+  }
+
+  p {
+    font-family: "Courier-Prime-Regular";
+    font-size: 1rem;
+    margin: 0 4rem;
+  }
+}
