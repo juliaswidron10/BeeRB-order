@@ -17,6 +17,7 @@ function Step1(props) {
 
 function Step2(props) {
   // if()
+  console.log(props.current);
   return (
     <div className="step-container-2">
       <h1>Your order</h1>
