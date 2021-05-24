@@ -1,0 +1,15 @@
+@use "../base/vars" as *;
+
+#complex-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.ant-form-item-explain.ant-form-item-explain-error {
+  text-align: start;
+}
+
+.ant-form-item-with-help {
+  margin-bottom: 1rem;
+}
