@@ -14,17 +14,19 @@ function Step1(props) {
     </div>
   );
 }
-export { Step1 };
 
-export class Step2 extends React.Component {
-  render() {
-    // if()
-    return (
-      <div className="step-container-2">
-        <h1>Your order</h1>
-      </div>
-    );
-  }
+function Step2(props) {
+  // if()
+  return (
+    <div className="step-container-2">
+      <h1>Your order</h1>
+      {props.current === 1 && (
+        <Button className="button btn-black" type="primary" onClick={props.next}>
+          Pay now
+        </Button>
+      )}
+    </div>
+  );
 }
 
 export class Step3 extends React.Component {
@@ -57,3 +59,6 @@ export class Step5 extends React.Component {
     );
   }
 }
+
+export { Step1 };
+export { Step2 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Steps, Button, message } from "antd";
 import "./App.scss";
 import "antd/dist/antd.css";
@@ -15,11 +15,13 @@ const steps = [
   {
     step: 1,
     title: "Select your beer",
+    current: 0,
     content: (next) => <Step1 next={next} />,
   },
   {
     step: 2,
     title: "Place your order",
+    current: 1,
     content: (next) => <Step2 next={next} />,
   },
   {
@@ -40,13 +42,17 @@ const steps = [
 ];
 
 function Orderflow() {
-  const [current, setCurrent] = React.useState(0);
+  const [current, setCurrent] = useState(0);
 
   function next() {
     console.log("next clicked");
     const nextStep = current + 1;
     setCurrent(nextStep);
+    if (current === 0) {
+      setCurrent(nextStep);
+    }
     if (current === 1) {
+      setCurrent(nextStep);
       document.getElementsByClassName("App")[0].classList.add("page-slide-to-left");
     }
   }
