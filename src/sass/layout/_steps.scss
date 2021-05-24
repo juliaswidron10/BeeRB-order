@@ -1,21 +1,35 @@
-.ant-steps {
-  display: inline-block !important;
-  width: 200% !important;
-  margin-left: 22rem !important;
-}
-
-.ant-steps-item:first-of-type {
-  width: 30%;
-}
+@use "../base/vars" as *;
 
 .steps-content-container {
-  display: inline-block !important;
+  display: inline-grid !important;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
   width: 200% !important;
+  margin-top: 3rem;
+}
 
-  .steps-content {
-    &:first-of-type {
-      width: 30%;
-      background: red;
-    }
+.steps-content {
+  h1 {
+    font-family: "Courier-Prime-Bold";
+  }
+}
+
+.step-container-1 {
+  padding: 2rem 3rem;
+  border-top: 3px solid $black;
+  border-right: 3px solid $black;
+
+  h1 {
+    display: flex;
+    align-self: flex-start;
+  }
+}
+
+.step-container-2 {
+  padding: 2rem 3rem;
+  border-top: 3px solid $black;
+
+  h1 {
+    display: flex;
+    align-self: flex-start;
   }
 }
