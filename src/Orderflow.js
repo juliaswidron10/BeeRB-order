@@ -16,28 +16,31 @@ const steps = [
     step: 1,
     title: "Select your beer",
     current: 0,
-    content: (next) => <Step1 next={next} />,
+    content: (next, current) => <Step1 next={next} current={current} />,
   },
   {
     step: 2,
     title: "Place your order",
     current: 1,
-    content: (next) => <Step2 next={next} />,
+    content: (next, current) => <Step2 next={next} current={current} />,
   },
   {
     step: 3,
     title: "A bit of a patience",
-    content: (next) => <Step3 next={next} />,
+    current: 2,
+    content: (next, current) => <Step3 next={next} current={current} />,
   },
   {
     step: 4,
     title: "Pick up your order ",
-    content: (next) => <Step4 next={next} />,
+    current: 3,
+    content: (next, current) => <Step4 next={next} current={current} />,
   },
   {
     step: 5,
     title: "Enjoy and repeat",
-    content: (next) => <Step5 next={next} />,
+    current: 4,
+    content: (next, current) => <Step5 next={next} current={current} />,
   },
 ];
 

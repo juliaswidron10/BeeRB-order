@@ -2,18 +2,15 @@
 import "./App.scss";
 import "antd/dist/antd.css";
 
-//import { Homepage } from "./Homepage.js";
-//import { Paymentform } from "./Paymentform.js";
-// import { Homepage } from "./Homepage.js";
+import { Homepage } from "./Homepage.js";
+import { Paymentform } from "./Paymentform.js";
 import { Orderflow } from "./Orderflow.js";
 
 function App() {
   return (
     <div className="App">
       {/* <Homepage /> */}
-
-      {/* <Paymentform />*/}
-
+      {/* <Paymentform /> */}
       <Orderflow />
     </div>
   );
