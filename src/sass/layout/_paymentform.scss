@@ -3,7 +3,7 @@
 #complex-form {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .ant-form-item-explain.ant-form-item-explain-error {
@@ -12,4 +12,26 @@
 
 .ant-form-item-with-help {
   margin-bottom: 1rem;
+}
+
+.payment-header {
+  color: $black;
+  margin: 1rem 0rem 3rem 0rem;
+  h1 {
+    font-family: "Dela-Gothic-One-Regular";
+    font-size: 1.5rem;
+    margin: 0.7rem;
+  }
+
+  p {
+    font-family: "Courier-Prime-Regular";
+    font-size: 0.7rem;
+    margin: 0 4rem;
+  }
+}
+
+.modal {
+  width: 50%;
+  border: 1px black solid;
+  margin: 0 auto;
 }

@@ -2,6 +2,12 @@ import React from "react";
 import "./App.scss";
 
 export class Homepage extends React.Component {
+  showOrderflow() {
+    console.log("helhelhe");
+    document.getElementsByClassName("homepage")[0].classList.add("hidden");
+    document.getElementsByClassName("orderflow")[0].classList.remove("hidden");
+  }
+
   render() {
     return (
       <div className="homepage">
@@ -61,7 +67,7 @@ export class Homepage extends React.Component {
           </div>
         </div>
 
-        <button className="btn-orange" onClick={() => this.showBeerlist()}>
+        <button className="btn-orange" onClick={this.showOrderflow.bind(this)}>
           Get started
         </button>
       </div>

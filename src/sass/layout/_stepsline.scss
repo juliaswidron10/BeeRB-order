@@ -38,7 +38,13 @@
       width: 500%;
       top: -22px;
       left: 42%;
-      height: 3px;
+      // height: 3px;
+    }
+    &::after:last-of-type {
+      width: 500%;
+      top: -10px;
+      left: 42%;
+      // height: 3px;
     }
   }
 }

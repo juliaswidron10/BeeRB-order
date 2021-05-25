@@ -8,6 +8,7 @@ import { Step2 } from "./Steps.js";
 import { Step3 } from "./Steps.js";
 import { Step4 } from "./Steps.js";
 import { Step5 } from "./Steps.js";
+import { Paymentform } from "./Paymentform.js";
 
 const { Step } = Steps;
 
@@ -44,19 +45,30 @@ const steps = [
   },
 ];
 
+// const pform = [
+//   {
+//     modal: (next, current) => <Paymentform next={next} current={current} />,
+//   },
+// ];
+
 function Orderflow() {
   const [current, setCurrent] = useState(0);
 
   function next() {
     console.log("next clicked");
     const nextStep = current + 1;
-    setCurrent(nextStep);
     if (current === 0) {
       setCurrent(nextStep);
-    }
-    if (current === 1) {
+    } else if (current === 1) {
       setCurrent(nextStep);
       document.getElementsByClassName("App")[0].classList.add("page-slide-to-left");
+    } else if (current === 2) {
+      setCurrent(nextStep);
+      document.getElementsByClassName("headers-container")[0].style.background = "red";
+      // document.getElementsByClassName("pickup-modal")[0].style.background = "red";
+    } else if (current === 4) {
+    } else {
+      setCurrent(nextStep);
     }
   }
 
@@ -66,8 +78,10 @@ function Orderflow() {
   }
 
   return (
-    <>
+    // don't forget to add hidden class to orderflow
+    <div className="orderflow">
       <Header />
+      <Paymentform />
       <Steps current={current}>
         {steps.map((item) => (
           <Step key={item.title} title={item.title} />
@@ -75,7 +89,7 @@ function Orderflow() {
       </Steps>
       <div className="steps-content-container">
         {steps.map((item) => (
-          <div className={`steps-content ${item.step !== current + 1}`}>{item.content(next)}</div>
+          <div className={`steps-content ${item.step !== current + 1}`}> {item.content(next, current)} </div>
         ))}
       </div>
 
@@ -96,7 +110,7 @@ function Orderflow() {
           </Button>
         )}
       </div>
-    </>
+    </div>
   );
 }
 
