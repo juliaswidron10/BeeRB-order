@@ -45,7 +45,8 @@
 
 // styling modal
 .ant-modal {
-  width: 40% !important;
+  width: 50% !important;
+  text-align: center;
 
   .anticon-check-circle {
     display: none;
@@ -53,16 +54,64 @@
 
   .ant-modal-confirm-title {
     font-family: "Dela-Gothic-One-Regular";
-    font-size: 1.8rem;
+    font-size: 1.7rem !important;
     margin-bottom: 0.7rem;
   }
 
   .ant-modal-confirm-content {
-    margin-left: 0;
-    text-align: center;
+    margin-left: 0 !important;
+
     p {
       font-family: "Courier-Prime-Regular";
       font-size: 1rem;
+    }
+
+    .queue-number-text {
+      margin-top: 1rem;
+      width: fit-content;
+      margin: 0 auto;
+      font-size: 1.5rem;
+    }
+  }
+
+  .ant-btn {
+    border-radius: 50%;
+    padding: 0 10px 0 10px !important;
+    background: $black !important;
+    border: none;
+    font-family: "Gruppo";
+    font-weight: 700;
+    font-size: 1.4rem;
+    position: absolute;
+    top: 13px;
+    right: 13px;
+    height: auto !important;
+    transition: none !important;
+
+    span {
+      visibility: hidden;
+      font-size: 10px;
+    }
+
+    span:after {
+      content: "X";
+      visibility: visible;
+      position: absolute !important;
+      display: block;
+      font-size: 1.3rem;
+      top: 0 !important;
+    }
+  }
+
+  .cheers-svg-container {
+    display: flex;
+    margin-top: 2rem;
+    justify-content: center;
+    .cheers-icon {
+      background-image: url(../../img/cheers.svg);
+      width: 9rem;
+      height: 10rem;
+      background-size: cover;
     }
   }
 }

@@ -65,7 +65,6 @@ function Orderflow() {
       document.getElementsByClassName("App")[0].classList.add("page-slide-to-left");
     } else if (current === 2) {
       setCurrent(nextStep);
-      document.getElementsByClassName("headers-container")[0].style.background = "red";
       Orderpickupmodal();
     } else if (current === 4) {
     } else {
@@ -80,7 +79,7 @@ function Orderflow() {
 
   return (
     // don't forget to add hidden class to orderflow
-    <div className="orderflow">
+    <div className="orderflow hidden">
       <Header />
       <Paymentform />
       <Steps current={current}>

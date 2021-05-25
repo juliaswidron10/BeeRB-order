@@ -12,7 +12,10 @@ function Orderpickupmodal() {
         <p>
           You can now pickup your order at the bar! <br></br>Just tell Jonas your order ID.
         </p>
-        <p className="queue-number-text">Order id: #</p>
+        <p className="queue-number-text"> Order id: # </p>
+        <div className="cheers-svg-container">
+          <div className="cheers-icon"></div>
+        </div>
       </div>
     ),
   });
@@ -24,11 +27,6 @@ function Orderpickupmodal() {
   //     clearInterval(timer);
   //     modal.destroy();
   //   }, secondsToGo * 1000);
-
-  return null;
 }
-
-// document.getElementsByClassName("anticon-exclamation-circle")[0].style.display = "none";
-// document.getElementsByClassName("ant-modal-confirm-content")[0].style.marginLeft = "0";
 
 export { Orderpickupmodal };
