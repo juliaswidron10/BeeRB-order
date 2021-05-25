@@ -23,6 +23,7 @@
 .step-container-1 {
   border-top: 3px solid $black;
   border-right: 3px solid $black;
+  border-left: 3px solid $black;
 
   h1 {
     display: flex;
@@ -51,11 +52,11 @@
   p {
     font-size: 1rem;
   }
+}
 
-  .queue-number-text {
-    margin-top: 3rem;
-    font-weight: 700;
-    background: $light-grey;
-    text-transform: uppercase;
-  }
+.queue-number-text {
+  margin-top: 3rem;
+  font-weight: 700;
+  background: $light-grey;
+  text-transform: uppercase;
 }

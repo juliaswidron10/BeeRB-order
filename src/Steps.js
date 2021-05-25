@@ -2,6 +2,7 @@ import React from "react";
 import "./App.scss";
 import "antd/dist/antd.css";
 import { Button } from "antd";
+import { Orderpickupmodal } from "./Orderpickupmodal";
 
 function refreshPage() {
   window.location.reload(false);
@@ -46,7 +47,8 @@ function Step3(props) {
     setTimeout(() => {
       console.log("Hello, World!");
       props.next();
-    }, 5000);
+      // Orderpickupmodal();
+    }, 3000);
   }
 
   return (

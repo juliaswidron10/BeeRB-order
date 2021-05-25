@@ -3,11 +3,11 @@ import "./App.scss";
 import "antd/dist/antd.css";
 import { Form, Input, Button, Space } from "antd";
 
-function closePaymentModal() {
-  console.log("closepay");
-  document.getElementsByClassName("payment-modal")[0].classList.add("hidden");
-  // props.next();
-}
+// function closePaymentModal() {
+//   console.log("closepay");
+//   document.getElementsByClassName("payment-modal")[0].classList.add("hidden");
+//   // props.next();
+// }
 
 const Paymentform = () => {
   const [form] = Form.useForm(); //not sure if i need this "form" thingy

@@ -14,9 +14,16 @@
   margin-bottom: 1rem;
 }
 
-.payment-header {
+.modal {
   color: $black;
   margin: 1rem 0rem 3rem 0rem;
+  width: 50%;
+  border: 1px black solid;
+  margin: 0 auto;
+  position: absolute;
+  top: 30%;
+  left: 25%;
+  background: white;
   h1 {
     font-family: "Dela-Gothic-One-Regular";
     font-size: 1.5rem;
@@ -30,8 +37,32 @@
   }
 }
 
-.modal {
-  width: 50%;
-  border: 1px black solid;
-  margin: 0 auto;
+.orderpickup-modal {
+  p {
+    font-size: 1rem;
+  }
+}
+
+// styling modal
+.ant-modal {
+  width: 40% !important;
+
+  .anticon-check-circle {
+    display: none;
+  }
+
+  .ant-modal-confirm-title {
+    font-family: "Dela-Gothic-One-Regular";
+    font-size: 1.8rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .ant-modal-confirm-content {
+    margin-left: 0;
+    text-align: center;
+    p {
+      font-family: "Courier-Prime-Regular";
+      font-size: 1rem;
+    }
+  }
 }

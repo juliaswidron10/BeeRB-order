@@ -9,6 +9,7 @@ import { Step3 } from "./Steps.js";
 import { Step4 } from "./Steps.js";
 import { Step5 } from "./Steps.js";
 import { Paymentform } from "./Paymentform.js";
+import { Orderpickupmodal } from "./Orderpickupmodal";
 
 const { Step } = Steps;
 
@@ -39,7 +40,7 @@ const steps = [
   },
   {
     step: 5,
-    title: "Enjoy and repeat",
+    title: "Enjoy and repeat!",
     current: 4,
     content: (next, current) => <Step5 next={next} current={current} />,
   },
@@ -65,7 +66,7 @@ function Orderflow() {
     } else if (current === 2) {
       setCurrent(nextStep);
       document.getElementsByClassName("headers-container")[0].style.background = "red";
-      // document.getElementsByClassName("pickup-modal")[0].style.background = "red";
+      Orderpickupmodal();
     } else if (current === 4) {
     } else {
       setCurrent(nextStep);
