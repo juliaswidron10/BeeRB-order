@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.scss";
 import "antd/dist/antd.css";
 import { Button } from "antd";
@@ -28,13 +28,18 @@ function Step2(props) {
     document.getElementsByClassName("payment-modal")[0].classList.remove("hidden");
   }
 
+  const [visible, setVisible] = useState(false);
+  const showModal = (Paymentform) => {
+    setVisible(true);
+  };
+
   return (
     <div className="step-container step-container-2">
       <h1>Your order</h1>
       {props.current === 0 && <p>Aren't you finding your best beer match? Ask our staff for recommendation!</p>}
       {props.current > 0 && (
         //  to do: order comes here
-        <Button className="button btn-orange" type="primary" onClick={props.next}>
+        <Button className="button btn-orange" type="primary" onClick={showModal}>
           Place order
         </Button>
       )}
@@ -45,7 +50,6 @@ function Step2(props) {
 function Step3(props) {
   if (props.current === 2) {
     setTimeout(() => {
-      console.log("Hello, World!");
       props.next();
       // Orderpickupmodal();
     }, 3000);

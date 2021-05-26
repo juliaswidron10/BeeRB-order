@@ -79,7 +79,7 @@ function Orderflow() {
 
   return (
     // don't forget to add hidden class to orderflow
-    <div className="orderflow hidden">
+    <div className="orderflow">
       <Header />
       <Paymentform />
       <Steps current={current}>

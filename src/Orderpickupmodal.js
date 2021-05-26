@@ -8,7 +8,7 @@ function Orderpickupmodal() {
   const modal = Modal.success({
     title: "Your order is ready!",
     content: (
-      <div>
+      <div className="orderpickup-modal">
         <p>
           You can now pickup your order at the bar! <br></br>Just tell Jonas your order ID.
         </p>
