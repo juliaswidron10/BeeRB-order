@@ -1,5 +1,4 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React, { useState } from "react";
 import { Steps, Button, message } from "antd";
 import "./App.scss";
 import "antd/dist/antd.css";
@@ -16,36 +15,46 @@ const steps = [
   {
     step: 1,
     title: "Select your beer",
-    content: <Step1 />,
+    current: 0,
+    content: (next) => <Step1 next={next} />,
   },
   {
     step: 2,
     title: "Place your order",
-    content: <Step2 />,
+    current: 1,
+    content: (next) => <Step2 next={next} />,
   },
   {
     step: 3,
     title: "A bit of a patience",
-    content: <Step3 />,
+    content: (next) => <Step3 next={next} />,
   },
   {
     step: 4,
     title: "Pick up your order ",
-    content: <Step4 />,
+    content: (next) => <Step4 next={next} />,
   },
   {
     step: 5,
     title: "Enjoy and repeat",
-    content: <Step5 />,
+    content: (next) => <Step5 next={next} />,
   },
 ];
 
 function Orderflow() {
-  const [current, setCurrent] = React.useState(0);
+  const [current, setCurrent] = useState(0);
 
   function next() {
+    console.log("next clicked");
     const nextStep = current + 1;
     setCurrent(nextStep);
+    if (current === 0) {
+      setCurrent(nextStep);
+    }
+    if (current === 1) {
+      setCurrent(nextStep);
+      document.getElementsByClassName("App")[0].classList.add("page-slide-to-left");
+    }
   }
 
   function prev() {
@@ -61,9 +70,9 @@ function Orderflow() {
           <Step key={item.title} title={item.title} />
         ))}
       </Steps>
-      <div class="steps-content-container">
+      <div className="steps-content-container">
         {steps.map((item) => (
-          <div className={`steps-content ${item.step !== current + 1}`}>{item.content}</div>
+          <div className={`steps-content ${item.step !== current + 1}`}>{item.content(next)}</div>
         ))}
       </div>
 
@@ -87,9 +96,5 @@ function Orderflow() {
     </>
   );
 }
-
-//creating parent container and adding it to DOM
-// let stepsContentContainer = React.createElement("div", { className: "steps-content-container" });
-// document.getElementsByClassName(".App")[0].appendChild(stepsContentContainer);
 
 export { Orderflow };
