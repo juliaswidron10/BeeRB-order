@@ -23,15 +23,6 @@ function Step1(props) {
 
 function Step2(props) {
   console.log(props.current);
-  function showPaymentModal() {
-    console.log("showpay");
-    document.getElementsByClassName("payment-modal")[0].classList.remove("hidden");
-  }
-
-  const [visible, setVisible] = useState(false);
-  const showModal = (Paymentform) => {
-    setVisible(true);
-  };
 
   return (
     <div className="step-container step-container-2">
@@ -39,7 +30,7 @@ function Step2(props) {
       {props.current === 0 && <p>Aren't you finding your best beer match? Ask our staff for recommendation!</p>}
       {props.current > 0 && (
         //  to do: order comes here
-        <Button className="button btn-orange" type="primary" onClick={showModal}>
+        <Button className="button btn-orange" type="primary" onClick={() => props.handlemodal()}>
           Place order
         </Button>
       )}

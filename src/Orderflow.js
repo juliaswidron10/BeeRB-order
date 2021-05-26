@@ -24,7 +24,7 @@ const steps = [
     step: 2,
     title: "Place your order",
     current: 1,
-    content: (next, current) => <Step2 next={next} current={current} />,
+    content: (next, current, handlemodal) => <Step2 next={next} current={current} handlemodal={handlemodal} />,
   },
   {
     step: 3,
@@ -54,6 +54,7 @@ const steps = [
 
 function Orderflow() {
   const [current, setCurrent] = useState(0);
+  const [visible, setVisible] = useState(false);
 
   function next() {
     console.log("next clicked");
@@ -77,11 +78,15 @@ function Orderflow() {
     setCurrent(prevStep);
   }
 
+  const handlemodal = () => {
+    setVisible(!visible);
+  };
+
   return (
     // don't forget to add hidden class to orderflow
     <div className="orderflow">
       <Header />
-      <Paymentform />
+      {visible === true && <Paymentform handlemodal={handlemodal} visible={visible} next={next} />}
       <Steps current={current}>
         {steps.map((item) => (
           <Step key={item.title} title={item.title} />
@@ -89,7 +94,10 @@ function Orderflow() {
       </Steps>
       <div className="steps-content-container">
         {steps.map((item) => (
-          <div className={`steps-content ${item.step !== current + 1}`}> {item.content(next, current)} </div>
+          <div key={item.title} className={`steps-content ${item.step !== current + 1}`}>
+            {" "}
+            {item.content(next, current, handlemodal)}{" "}
+          </div>
         ))}
       </div>
 

@@ -20,13 +20,13 @@ function Orderpickupmodal() {
     ),
   });
 
-  //   const timer = setInterval(() => {
-  //     secondsToGo -= 1;
-  //   }, 1000);
-  //   setTimeout(() => {
-  //     clearInterval(timer);
-  //     modal.destroy();
-  //   }, secondsToGo * 1000);
+  const timer = setInterval(() => {
+    secondsToGo -= 1;
+  }, 1000);
+  setTimeout(() => {
+    clearInterval(timer);
+    modal.destroy();
+  }, secondsToGo * 1000);
 }
 
 export { Orderpickupmodal };

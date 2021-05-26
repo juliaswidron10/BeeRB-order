@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import "./App.scss";
 import "antd/dist/antd.css";
 import { Form, Input, Button, Space, Modal } from "antd";
+import { getNodeText } from "@testing-library/react";
+
+// post order here:
+// https://beerb-exam.herokuapp.com/order
 
 // function closePaymentModal() {
 //   console.log("closepay");
@@ -9,15 +13,10 @@ import { Form, Input, Button, Space, Modal } from "antd";
 //   // props.next();
 // }
 
-function Paymentform() {
+function Paymentform(props) {
   const [form] = Form.useForm(); //not sure if i need this "form" thingy
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
-  };
-
-  const [visible, setVisible] = useState(false);
-  const showModal = () => {
-    setVisible(true);
   };
 
   // const handleOk = (schoolRollOutRequestForm) => {
@@ -26,13 +25,18 @@ function Paymentform() {
   //   setVisible(false);
   // };
 
-  const handleCancel = () => {
-    setVisible(false);
-  };
+  function handleSubmit() {
+    props.handlemodal();
+    props.next();
+
+    // setInterval(() => {
+    //   props.next();
+    // }, 3000);
+  }
 
   return (
     <div className="modal payment-modal">
-      <Modal destroyOnClose title="Payment" visible={showModal} onCancel={handleCancel}>
+      <Modal destroyOnClose title="Payment" visible={props.visible} onCancel={props.handlemodal}>
         {/* <div className="payment-header">
           <h1>Payment</h1>
           <p>Please enter your card information here</p>
@@ -91,7 +95,7 @@ function Paymentform() {
             </Space>
           </Form.Item>
           <Form.Item label=" " colon={false}>
-            <Button className="btn-orange" type="primary" htmlType="submit" onClick={handleCancel}>
+            <Button className="btn-orange" type="primary" htmlType="submit" onClick={handleSubmit}>
               Complete payment
             </Button>
           </Form.Item>
