@@ -1,5 +1,30 @@
 @use "../base/vars" as *;
 
+.Paymentform {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+label,
+input {
+  display: block;
+  text-align: left;
+  margin-bottom: 5px;
+}
+
+.form-control {
+  margin-bottom: 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  padding: 30px;
+  margin: auto;
+}
+
+/*
 #complex-form {
   display: flex;
   flex-direction: column;
@@ -13,3 +38,4 @@
 .ant-form-item-with-help {
   margin-bottom: 1rem;
 }
+*/
