@@ -2,7 +2,7 @@ import React from "react";
 import "./App.scss";
 import "antd/dist/antd.css";
 import { Button } from "antd";
-import Store from './store'
+import { Store } from "./store.js";
 
 function Step1(props) {
   // if()
