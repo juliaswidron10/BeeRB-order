@@ -2,12 +2,14 @@ import React from "react";
 import "./App.scss";
 import "antd/dist/antd.css";
 import { Button } from "antd";
+import Store from './store'
 
 function Step1(props) {
   // if()
   return (
     <div className="step-container-1">
-      <h1>Beers</h1>
+      <Store />
+
       <Button className="button btn-black" type="primary" onClick={props.next}>
         Add to cart
       </Button>
