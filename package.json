@@ -8,12 +8,17 @@
     "@testing-library/user-event": "^12.8.3",
     "ant": "^0.2.0",
     "antd": "^4.15.6",
+    "antd-mask-input": "^0.1.15",
     "cleave.js": "^1.6.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-final-form": "^6.5.3",
+    "react-hook-form": "^7.6.8",
     "react-input-mask": "^2.0.4",
+    "react-payment-inputs": "^1.1.8",
     "react-scripts": "4.0.3",
     "sass": "^1.32.13",
+    "validator": "^13.6.0",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
