@@ -3,54 +3,45 @@ import { Steps, Button, message } from "antd";
 import "./App.scss";
 import "antd/dist/antd.css";
 import { Header } from "./Header.js";
-import { Step1 } from "./Steps.js";
-import { Step2 } from "./Steps.js";
-import { Step3 } from "./Steps.js";
-import { Step4 } from "./Steps.js";
-import { Step5 } from "./Steps.js";
+import { Step1, Step2, Step3, Step4, Step5 } from "./Steps.js";
 import { Paymentform } from "./Paymentform.js";
 import { Orderpickupmodal } from "./Orderpickupmodal";
+import { Beermodal } from "./Beermodal.js";
 
 const { Step } = Steps;
 
 const steps = [
   {
-    step: 1,
+    // step: 1,
     title: "Select your beer",
     current: 0,
-    content: (next, current) => <Step1 next={next} current={current} />,
+    content: (next, current, handlemodal) => <Step1 next={next} current={current} handlemodal={handlemodal} />,
   },
   {
-    step: 2,
+    // step: 2,
     title: "Place your order",
     current: 1,
     content: (next, current, handlemodal) => <Step2 next={next} current={current} handlemodal={handlemodal} />,
   },
   {
-    step: 3,
+    // step: 3,
     title: "A bit of a patience",
     current: 2,
     content: (next, current) => <Step3 next={next} current={current} />,
   },
   {
-    step: 4,
+    // step: 4,
     title: "Pick up your order ",
     current: 3,
     content: (next, current) => <Step4 next={next} current={current} />,
   },
   {
-    step: 5,
+    // step: 5,
     title: "Enjoy and repeat!",
     current: 4,
     content: (next, current) => <Step5 next={next} current={current} />,
   },
 ];
-
-// const pform = [
-//   {
-//     modal: (next, current) => <Paymentform next={next} current={current} />,
-//   },
-// ];
 
 function Orderflow() {
   const [current, setCurrent] = useState(0);
@@ -73,10 +64,10 @@ function Orderflow() {
     }
   }
 
-  function prev() {
-    const prevStep = current - 1;
-    setCurrent(prevStep);
-  }
+  // function prev() {
+  //   const prevStep = current - 1;
+  //   setCurrent(prevStep);
+  // }
 
   const handlemodal = () => {
     setVisible(!visible);
@@ -87,6 +78,7 @@ function Orderflow() {
     <div className="orderflow">
       <Header />
       {visible === true && <Paymentform handlemodal={handlemodal} visible={visible} next={next} />}
+      {visible === true && <Beermodal handlemodal2={handlemodal} visible={visible} />}
       <Steps current={current}>
         {steps.map((item) => (
           <Step key={item.title} title={item.title} />
@@ -112,11 +104,11 @@ function Orderflow() {
             Done
           </Button>
         )}
-        {current > 0 && (
+        {/* {current > 0 && (
           <Button style={{ margin: "0 8px" }} onClick={() => prev()}>
             Previous
           </Button>
-        )}
+        )} */}
       </div>
     </div>
   );

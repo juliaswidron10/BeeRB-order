@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.scss";
 import "antd/dist/antd.css";
 import { Button } from "antd";
-import { Orderpickupmodal } from "./Orderpickupmodal";
 
 function refreshPage() {
   window.location.reload(false);
@@ -12,9 +11,8 @@ function Step1(props) {
   // if()
   return (
     <div className="step-container step-container-1">
-      <h1>Beers</h1>
       {/* add if statement about cart.length, if there is at least one product in the cart, add to cart */}
-      <Button className="button btn-black" type="primary" onClick={props.next}>
+      <Button className="button btn-black" type="primary" onClick={props.handlemodal2}>
         Add to cart
       </Button>
     </div>
@@ -26,7 +24,6 @@ function Step2(props) {
 
   return (
     <div className="step-container step-container-2">
-      <h1>Your order</h1>
       {props.current === 0 && <p>Aren't you finding your best beer match? Ask our staff for recommendation!</p>}
       {props.current > 0 && (
         //  to do: order comes here

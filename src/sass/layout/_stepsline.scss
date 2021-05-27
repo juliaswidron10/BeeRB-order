@@ -3,7 +3,7 @@
 .ant-steps {
   // display: inline-block !important;
   display: inline-grid !important;
-  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 2.2fr 0.8fr 1fr 1fr 1fr;
   width: 200% !important;
   font-family: "Dela-Gothic-One-Regular";
 }
@@ -38,13 +38,13 @@
       width: 500%;
       top: -22px;
       left: 42%;
-      // height: 3px;
+      height: 3px;
     }
     &::after:last-of-type {
       width: 500%;
       top: -10px;
       left: 42%;
-      // height: 3px;
+      height: 3px;
     }
   }
 }

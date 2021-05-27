@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.scss";
 import "antd/dist/antd.css";
 import { Form, Input, Button, Space, Modal } from "antd";
-import { getNodeText } from "@testing-library/react";
 
 // post order here:
 // https://beerb-exam.herokuapp.com/order
@@ -25,7 +24,8 @@ function Paymentform(props) {
   //   setVisible(false);
   // };
 
-  function handleSubmit() {
+  function handleSubmit(evt) {
+    evt.preventDefault();
     props.handlemodal();
     props.next();
 

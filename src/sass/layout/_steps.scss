@@ -2,7 +2,7 @@
 
 .steps-content-container {
   display: inline-grid !important;
-  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 2.2fr 0.8fr 1fr 1fr 1fr;
   width: 200% !important;
   margin-top: 3rem;
 }
@@ -21,10 +21,6 @@
 }
 
 .step-container-1 {
-  border-top: 3px solid $black;
-  border-right: 3px solid $black;
-  border-left: 3px solid $black;
-
   h1 {
     display: flex;
     align-self: flex-start;
@@ -32,9 +28,6 @@
 }
 
 .step-container-2 {
-  border-top: 3px solid $black;
-  border-right: 3px solid $black;
-
   h1 {
     display: flex;
     align-self: flex-start;
