@@ -1,8 +1,20 @@
 import React from 'react';
 import Beer from './beer.js';
 
-class Inventory extends React.Component {
- 
+export default function Inventory(props) {
+        return (
+          <main className="ProductList">
+            {/* {props.products.length === 0 && <Loader />} */}
+            {props.beers.map((item) => (
+              <Beer addToBasket={props.addToBasket} {...item} key={item.id} />
+            ))}
+          </main>
+        );
+      }
+
+// function Loader() {
+//         return <p>Loading...</p>;
+//       }
     // constructor(props) {
     //     super(props);
     
@@ -19,15 +31,5 @@ class Inventory extends React.Component {
     //     this.state = { beers };
     // }
 
-    render(){
-        return(
-            <div>
-               
-                <Beer />
 
-            </div>
-        )
-    }
-}
-
-export default Inventory;
+// export default Inventory;
