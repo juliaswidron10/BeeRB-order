@@ -1,13 +1,15 @@
 import React from "react";
+import { useState } from 'react';
 import "./App.scss";
 import "antd/dist/antd.css";
 import { Button } from "antd";
 import { Store } from "./store/store";
-import {Basket} from "./store/basket"
+import Basket from "./store/basket"
 
 function Step1(props) {
-  const [basket, setBasket] = useState([]);
+  // const [basket, setBasket] = useState([]);
   // if()
+  // const [basket, setBasket] = useState([]);
   return (
     <div className="step-container-1">
       <Store />
