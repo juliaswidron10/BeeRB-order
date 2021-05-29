@@ -1,21 +1,70 @@
-import React, { useState } from "react";
+import React from "react";
 import { Steps, Button, message } from "antd";
 import "./App.scss";
 import "antd/dist/antd.css";
 import { Header } from "./Header.js";
+
 import { Step1, Step2, Step3, Step4, Step5 } from "./Steps.js";
 import { Paymentform } from "./Paymentform.js";
 import { Orderpickupmodal } from "./Orderpickupmodal";
 import { Beermodal } from "./Beermodal.js";
+import { useState, useEffect, useRef } from "react";
 
 const { Step } = Steps;
 
+
+function Orderflow() {
+  const [current, setCurrent] = React.useState(0);
+  const myEl = useRef(null);
+  const [products, setProducts] = useState([]);
+  const [basket, setBasket] = useState([]);
+  // const [start, setStart] = useState(0);
+
+  useEffect(() => {
+    fetch(`https://beerb-exam.herokuapp.com/beertypes`)
+      .then((res) => res.json())
+      .then(setProducts);
+  });
+
+  function addToBasket(payload) {
+    const inBasket = basket.findIndex((item) => item.id === payload.id);
+    if (inBasket === -1) {
+      const nextPayload = { ...payload };
+      nextPayload.amount = 1;
+      setBasket((prevState) => [...prevState, nextPayload]);
+    } else {
+      const newBasket = basket.map((item) => {
+        if (item.id === payload.id) {
+          item.amount += 1;
+        }
+        return item;
+      });
+      setBasket(newBasket);
+    }
+  }
+
+  function next() {
+    console.log("next clicked");
+    const nextStep = current + 1;
+    setCurrent(nextStep);
+    if (current === 1) {
+      document.getElementsByClassName("App")[0].classList.add("page-slide-to-left");
+    }
+  }
+
+  function prev() {
+    const prevStep = current - 1;
+    setCurrent(prevStep);
+  }
+  
 const steps = [
   {
     // step: 1,
     title: "Select your beer",
+
     current: 0,
-    content: (next, current, handlemodal) => <Step1 next={next} current={current} handlemodal={handlemodal} />,
+    content: (next, current, handlemodal) => <Step1 next={next} current={current}  beers={products} basket={basket} addToBasket={addToBasket} handlemodal={handlemodal} />,
+
   },
   {
     // step: 2,
@@ -42,6 +91,7 @@ const steps = [
     content: (next, current) => <Step5 next={next} current={current} />,
   },
 ];
+
 
 function Orderflow() {
   const [current, setCurrent] = useState(0);

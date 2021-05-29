@@ -1,23 +1,31 @@
 import React from "react";
+import { useState } from 'react';
 import "./App.scss";
 import "antd/dist/antd.css";
 import { Button } from "antd";
+import { Store } from "./store/store";
+import Basket from "./store/basket"
 
 function refreshPage() {
   window.location.reload(false);
 }
 
 function Step1(props) {
+  // const [basket, setBasket] = useState([]);
   // if()
+  // const [basket, setBasket] = useState([]);
   return (
+
     <div className="step-container step-container-1">
       {/* add if statement about cart.length, if there is at least one product in the cart, add to cart */}
+         <Store />
       <Button className="button btn-black" type="primary" onClick={props.handlemodal2}>
         Add to cart
       </Button>
     </div>
   );
 }
+
 
 function Step2(props) {
   console.log(props.current);
@@ -33,6 +41,7 @@ function Step2(props) {
       )}
     </div>
   );
+
 }
 
 function Step3(props) {

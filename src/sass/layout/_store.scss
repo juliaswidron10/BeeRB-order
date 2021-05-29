@@ -1,0 +1,26 @@
+@use "../base/vars" as *;
+
+.beerimg{
+    height: 100px;
+    width: auto;
+}
+
+.beer-add{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-content: center;
+    // margin: .2rem;
+    padding-top: 1rem;
+}
+.beer-add > h1{
+    line-height: 1rem;
+}
+.beer-button{
+    width: 95px;
+    font-size: 11px;
+}
+
+// .beer-inventory{
+
+// }
