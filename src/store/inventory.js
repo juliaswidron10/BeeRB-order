@@ -8,28 +8,9 @@ export default function Inventory(props) {
             {props.beers.map((item) => (
               <Beer addToBasket={props.addToBasket} {...item} key={item.id} />
             ))}
+
+
           </main>
         );
       }
 
-// function Loader() {
-//         return <p>Loading...</p>;
-//       }
-    // constructor(props) {
-    //     super(props);
-    
-    //     const beers = [];
-    
-    //     for (let i = 0; i < 10; i++) {
-    //         beers.push({
-    //             name: this.state.1.name,
-    //             category: this.state[i].category,
-    //             label: this.state[i].label 
-    //         });
-    //     }
-    
-    //     this.state = { beers };
-    // }
-
-
-// export default Inventory;

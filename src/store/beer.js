@@ -11,9 +11,11 @@ export default function Beer(props) {
   const [amount, setAmount] = useState(0);
 
   function handleminus(evt) {
-    setAmount((prevState) => {
-      return prevState - 1;
-    });
+    if(amount > 0){
+      setAmount((prevState) => {
+        return prevState - 1;
+      });
+    }
   }
   function handleplus(evt) {
     setAmount((prevState) => {
@@ -22,14 +24,6 @@ export default function Beer(props) {
   }
         return(
             <div className="beer-inventory">
-                {/* <img src={elhefe} className="beerimg"/>
-                <h1>El Hefe</h1> 
-                <h2>IPA</h2>
-                <p></p>
-                <div className="buttons">
-                    <p>+</p><h3>1</h3><p>-</p>
-                </div>
-                <button>Add to Cart</button> */}
                 <Card
                 hoverable
                 style={{ width: 200 }}
@@ -37,14 +31,14 @@ export default function Beer(props) {
                 <Meta title={props.name} description={props.category} />
                 <div className="beer-add">
                 
-                <MinusCircleOutlined disabled={amount === 0} onClick={handleminus} />
+                <MinusCircleOutlined  onClick={handleminus} />
                 <h1>{amount}</h1>
                 <PlusCircleOutlined onClick={handleplus}/>
                 </div>
-                <Button onClick={() => props.addToBasket(props)} className="button btn-black beer-button" type="primary">
+                <Button onClick={(item) => props.addToBasket(props)}  className="button btn-black beer-button" type="primary">
                     Add
                 </Button>
-                </Card>,
+                </Card>
 
             </div>
         )

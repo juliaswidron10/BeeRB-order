@@ -4,7 +4,7 @@ import "./App.scss";
 import "antd/dist/antd.css";
 import { Button } from "antd";
 import { Store } from "./store/store";
-import Basket from "./store/basket"
+// import Basket from "./store/basket"
 
 function Step1(props) {
   // const [basket, setBasket] = useState([]);
@@ -28,7 +28,6 @@ export class Step2 extends React.Component {
     return (
       <div className="step-container-2">
         <h1>Your order</h1>
-        <Basket basket={basket} />
       </div>
     );
   }
