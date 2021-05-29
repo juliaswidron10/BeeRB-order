@@ -20,7 +20,7 @@ export const Store = () => {
     const inBasket = basket.findIndex((item) => item.id === payload.id);
     if (inBasket === -1) {
       const nextPayload = { ...payload };
-      nextPayload.amount = payload.amount;
+      nextPayload.amount = 1;
       setBasket((prevState) => [...prevState, nextPayload]);
     } else {
       const newBasket = basket.map((item) => {
