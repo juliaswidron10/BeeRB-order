@@ -15,31 +15,41 @@ const steps = [
     step: 1,
     title: "Select your beer",
     current: 0,
-    content: (next, current, handlemodal2) => <Step1 next={next} current={current} handlemodal2={handlemodal2} />,
+    content: (next, current, handlemodal2, handlemodal) => (
+      <Step1 next={next} current={current} handlemodal={handlemodal} handlemodal2={handlemodal2} />
+    ),
   },
   {
     step: 2,
     title: "Place your order",
     current: 1,
-    content: (next, current, handlemodal) => <Step2 next={next} current={current} handlemodal={handlemodal} />,
+    content: (next, current, handlemodal, handlemodal2) => (
+      <Step2 next={next} current={current} handlemodal2={handlemodal2} handlemodal={handlemodal} />
+    ),
   },
   {
     step: 3,
     title: "A bit of a patience",
     current: 2,
-    content: (next, current) => <Step3 next={next} current={current} />,
+    content: (next, current, handlemodal, handlemodal2) => (
+      <Step3 next={next} current={current} handlemodal={handlemodal} handlemodal2={handlemodal2} />
+    ),
   },
   {
     step: 4,
     title: "Pick up your order ",
     current: 3,
-    content: (next, current) => <Step4 next={next} current={current} />,
+    content: (next, current, handlemodal, handlemodal2) => (
+      <Step4 next={next} current={current} handlemodal={handlemodal} handlemodal2={handlemodal2} />
+    ),
   },
   {
     step: 5,
     title: "Enjoy and repeat!",
     current: 4,
-    content: (next, current) => <Step5 next={next} current={current} />,
+    content: (next, current, handlemodal, handlemodal2) => (
+      <Step5 next={next} current={current} handlemodal={handlemodal} handlemodal2={handlemodal2} />
+    ),
   },
 ];
 

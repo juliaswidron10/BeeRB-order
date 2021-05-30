@@ -63,10 +63,13 @@ function Paymentform(props) {
           <h1>Payment</h1>
           <p>Please enter your card information here</p>
         </div> */}
-        <h1>Payment</h1>
+        <div className="payment-modal-header">
+          <h1>Payment</h1>
+          <p>Please enter your card information here.</p>
+        </div>
         <form ref={form}>
-          <div className="form-layout">
-            <label htmlFor="name">Name on card</label>
+          <div className="form-layout div1">
+            <label htmlFor="name">Cardholder's name</label>
             <Input
               id="name"
               type="text"
@@ -78,7 +81,7 @@ function Paymentform(props) {
             />
           </div>
 
-          <div className="form-layout">
+          <div className="form-layout div2">
             <label htmlFor="cardnumber">Card number</label>
             <MaskedInput
               mask="1111 1111 1111 1111"
@@ -89,8 +92,8 @@ function Paymentform(props) {
             />
           </div>
 
-          <div className="form-layout">
-            <label htmlFor="expirydate">Expiration date (MM/YY)</label>
+          <div className="form-layout div3">
+            <label htmlFor="expirydate">Expiry date (MM/YY)</label>
             <MaskedInput
               mask="11/11"
               className="ant-input"
@@ -99,7 +102,7 @@ function Paymentform(props) {
               onChange={(e) => setExpiryDate(e.target.value)}
             />
           </div>
-          <div className="form-layout">
+          <div className="form-layout div4">
             <label htmlFor="cvv">CVV</label>
             <MaskedInput
               mask="111"
@@ -110,7 +113,7 @@ function Paymentform(props) {
             />
           </div>
 
-          <Button className="btn-orange" type="primary" htmlType="submit" disabled={!isValid} onClick={handleSubmit}>
+          <Button className="div5" type="primary" htmlType="submit" disabled={!isValid} onClick={handleSubmit}>
             Complete payment
           </Button>
         </form>

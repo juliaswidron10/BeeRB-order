@@ -11,7 +11,7 @@ function Step1(props) {
   return (
     <div className="step-container step-container-1">
       {/* add if statement about cart.length, if there is at least one product in the cart, add to cart */}
-      <Button className="button btn-black" type="primary" onClick={() => props.handlemodal2()}>
+      <Button className="button btn-black" type="primary" onClick={() => props.handlemodal()}>
         Add to cart
       </Button>
     </div>
