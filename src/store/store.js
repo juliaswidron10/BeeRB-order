@@ -37,7 +37,7 @@ export const Store = () => {
       <Inventory beers={products} addToBasket={addToBasket} />
       <Basket basket={basket} />
     </div>
-  );
+  )
     }
 
 export default Store;

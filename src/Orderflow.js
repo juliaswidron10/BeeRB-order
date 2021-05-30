@@ -13,49 +13,49 @@ import { useState, useEffect, useRef } from "react";
 const { Step } = Steps;
 
 
-function Orderflow() {
-  const [current, setCurrent] = React.useState(0);
-  const myEl = useRef(null);
-  const [products, setProducts] = useState([]);
-  const [basket, setBasket] = useState([]);
-  // const [start, setStart] = useState(0);
+// function Orderflow() {
+//   const [current, setCurrent] = React.useState(0);
+//   const myEl = useRef(null);
+//   const [products, setProducts] = useState([]);
+//   const [basket, setBasket] = useState([]);
+//   // const [start, setStart] = useState(0);
 
-  useEffect(() => {
-    fetch(`https://beerb-exam.herokuapp.com/beertypes`)
-      .then((res) => res.json())
-      .then(setProducts);
-  });
+//   useEffect(() => {
+//     fetch(`https://beerb-exam.herokuapp.com/beertypes`)
+//       .then((res) => res.json())
+//       .then(setProducts);
+//   });
 
-  function addToBasket(payload) {
-    const inBasket = basket.findIndex((item) => item.id === payload.id);
-    if (inBasket === -1) {
-      const nextPayload = { ...payload };
-      nextPayload.amount = 1;
-      setBasket((prevState) => [...prevState, nextPayload]);
-    } else {
-      const newBasket = basket.map((item) => {
-        if (item.id === payload.id) {
-          item.amount += 1;
-        }
-        return item;
-      });
-      setBasket(newBasket);
-    }
-  }
+//   function addToBasket(payload) {
+//     const inBasket = basket.findIndex((item) => item.id === payload.id);
+//     if (inBasket === -1) {
+//       const nextPayload = { ...payload };
+//       nextPayload.amount = 1;
+//       setBasket((prevState) => [...prevState, nextPayload]);
+//     } else {
+//       const newBasket = basket.map((item) => {
+//         if (item.id === payload.id) {
+//           item.amount += 1;
+//         }
+//         return item;
+//       });
+//       setBasket(newBasket);
+//     }
+//   }
 
-  function next() {
-    console.log("next clicked");
-    const nextStep = current + 1;
-    setCurrent(nextStep);
-    if (current === 1) {
-      document.getElementsByClassName("App")[0].classList.add("page-slide-to-left");
-    }
-  }
+//   function next() {
+//     console.log("next clicked");
+//     const nextStep = current + 1;
+//     setCurrent(nextStep);
+//     if (current === 1) {
+//       document.getElementsByClassName("App")[0].classList.add("page-slide-to-left");
+//     }
+//   }
 
-  function prev() {
-    const prevStep = current - 1;
-    setCurrent(prevStep);
-  }
+//   function prev() {
+//     const prevStep = current - 1;
+//     setCurrent(prevStep);
+//   }
   
 const steps = [
   {
@@ -63,7 +63,7 @@ const steps = [
     title: "Select your beer",
 
     current: 0,
-    content: (next, current, handlemodal) => <Step1 next={next} current={current}  beers={products} basket={basket} addToBasket={addToBasket} handlemodal={handlemodal} />,
+    content: (next, current, handlemodal) => <Step1 next={next} current={current} handlemodal={handlemodal} />,
 
   },
   {
@@ -164,4 +164,4 @@ function Orderflow() {
   );
 }
 
-export { Orderflow };
+export {Orderflow} ;

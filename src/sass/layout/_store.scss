@@ -20,7 +20,97 @@
     width: 95px;
     font-size: 11px;
 }
+.inventory-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    align-items: space-between;
+}
+.inventory-container > div{
+    padding-top: 2rem;
+}
 
+//STYLING MODAL WITH BEERS DETAILS
+.beersdetailsmodal{
+    width: 90vw !important;
+    margin-left: 5vw;
+    font-family: "Courier-Prime-Regular";
+    // display: flex !important ;
+    // flex-direction: row !important;
+    // justify-items: center;
+    // grid-template-columns: 1fr 3fr ;
+    // grid-template-rows: 1fr 1fr 1fr;
+}
+.beer-details-heading{
+    padding: 2rem;
+    margin: 0 2rem;
+    display: flex;   
+    width: 90%;
+    height: 4rem;
+    border-bottom: 2px solid black ;
+}
+
+.beer-details-heading > div{
+    padding-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+}
+.beer-details-heading > div > h2{
+    margin: 0;
+    padding: 0;
+}
+.ant-modal-body{
+    display: flex;
+
+}
+.ant-modal-header , .ant-modal-footer{
+    display: none;
+}
+.beersdetailsmodal > aside{
+    // align-self: center;
+    width: 24vw;
+    margin: 4rem 2rem;
+    height: 100%;
+}
+.beersdetailsmodal img{
+    width: 24vw;
+    margin-top: 4rem;
+    // grid-area: 1 / 1 ;
+}
+
+.addingtobasket{
+    margin: 2rem 2rem 0rem 3rem;
+    display: flex;
+    align-content: center;
+}
+.addingtobasket button{
+    margin-right: 2rem;
+}
+.butt-add{
+    padding: .7rem;
+}
+
+.beerInfo{
+    margin: 0rem 3rem;
+}
+.beerInfo h1, .ant-tabs-nav-list {
+    font-family: "Courier-Prime-Bold" ;
+    text-transform: uppercase;
+    margin: 0;
+    font-size: 1.2rem;
+}
+.beerInfo .ant-tabs-nav-list{
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    margin: 2rem 0rem 1rem 0rem;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    cursor: pointer;
+    width: 100%;
+}
+// .beerInfo ul li{
+// }
 // .beer-inventory{
 
 // }
