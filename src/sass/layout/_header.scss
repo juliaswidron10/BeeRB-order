@@ -20,3 +20,15 @@
     margin: 0 4rem;
   }
 }
+
+.info-icon-container {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  .info-icon {
+    background-image: url(../../img/info.svg);
+    width: 1.5rem;
+    height: 1.5rem;
+    background-size: cover;
+  }
+}

@@ -2,7 +2,7 @@
 
 .steps-content-container {
   display: inline-grid !important;
-  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 2.2fr 0.8fr 1fr 1fr 1fr;
   width: 200% !important;
   margin-top: 3rem;
 }
@@ -11,13 +11,16 @@
   h1 {
     font-family: "Courier-Prime-Bold";
   }
+  p {
+    font-family: "Courier-Prime-Regular";
+  }
+}
+
+.step-container {
+  padding: 2rem 3rem;
 }
 
 .step-container-1 {
-  padding: 2rem 3rem;
-  border-top: 3px solid $black;
-  border-right: 3px solid $black;
-
   h1 {
     display: flex;
     align-self: flex-start;
@@ -25,11 +28,28 @@
 }
 
 .step-container-2 {
-  padding: 2rem 3rem;
-  border-top: 3px solid $black;
-
   h1 {
     display: flex;
     align-self: flex-start;
   }
+
+  p {
+    font-family: "Courier-Prime-Italic";
+    font-size: 0.8rem;
+    text-align: left;
+  }
+}
+
+.step-container-3,
+.step-container-4 {
+  p {
+    font-size: 1rem;
+  }
+}
+
+.queue-number-text {
+  margin-top: 3rem;
+  font-weight: 700;
+  background: $light-grey;
+  text-transform: uppercase;
 }
