@@ -8,13 +8,7 @@ function Beermodal(props) {
     <div className="beer-modal">
       <Modal visible={props.visible2} onCancel={props.handlemodal2}>
         <div className="beer-modal">
-          <p>
-            You can now pickup your order at the bar! <br></br>Just tell Jonas your order ID.
-          </p>
-          <p className="queue-number-text"> Order id: # </p>
-          <div className="cheers-svg-container">
-            <div className="cheers-icon"></div>
-          </div>
+          <p>This is a beer modal.</p>
         </div>
       </Modal>
     </div>

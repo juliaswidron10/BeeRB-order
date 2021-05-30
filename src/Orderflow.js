@@ -12,31 +12,31 @@ const { Step } = Steps;
 
 const steps = [
   {
-    // step: 1,
+    step: 1,
     title: "Select your beer",
     current: 0,
-    content: (next, current, handlemodal) => <Step1 next={next} current={current} handlemodal={handlemodal} />,
+    content: (next, current, handlemodal2) => <Step1 next={next} current={current} handlemodal2={handlemodal2} />,
   },
   {
-    // step: 2,
+    step: 2,
     title: "Place your order",
     current: 1,
     content: (next, current, handlemodal) => <Step2 next={next} current={current} handlemodal={handlemodal} />,
   },
   {
-    // step: 3,
+    step: 3,
     title: "A bit of a patience",
     current: 2,
     content: (next, current) => <Step3 next={next} current={current} />,
   },
   {
-    // step: 4,
+    step: 4,
     title: "Pick up your order ",
     current: 3,
     content: (next, current) => <Step4 next={next} current={current} />,
   },
   {
-    // step: 5,
+    step: 5,
     title: "Enjoy and repeat!",
     current: 4,
     content: (next, current) => <Step5 next={next} current={current} />,
@@ -45,7 +45,6 @@ const steps = [
 
 function Orderflow() {
   const [current, setCurrent] = useState(0);
-  const [visible, setVisible] = useState(false);
 
   function next() {
     console.log("next clicked");
@@ -69,16 +68,25 @@ function Orderflow() {
   //   setCurrent(prevStep);
   // }
 
+  const [visible, setVisible] = useState(false);
+  const [visible2, setVisible2] = useState(false);
+
   const handlemodal = () => {
+    console.log("handlmodal1");
     setVisible(!visible);
+  };
+
+  const handlemodal2 = () => {
+    console.log("handlmodal22222");
+    setVisible2(!visible2);
   };
 
   return (
     // don't forget to add hidden class to orderflow
     <div className="orderflow">
       <Header />
+      {visible2 === true && <Beermodal handlemodal2={handlemodal2} visible2={visible2} />}
       {visible === true && <Paymentform handlemodal={handlemodal} visible={visible} next={next} />}
-      {visible === true && <Beermodal handlemodal2={handlemodal} visible={visible} />}
       <Steps current={current}>
         {steps.map((item) => (
           <Step key={item.title} title={item.title} />
@@ -88,7 +96,7 @@ function Orderflow() {
         {steps.map((item) => (
           <div key={item.title} className={`steps-content ${item.step !== current + 1}`}>
             {" "}
-            {item.content(next, current, handlemodal)}{" "}
+            {item.content(next, current, handlemodal, handlemodal2)}{" "}
           </div>
         ))}
       </div>
