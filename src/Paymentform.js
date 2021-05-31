@@ -123,4 +123,4 @@ function Paymentform(props) {
   );
 }
 
-// export { Paymentform };
+export { Paymentform };

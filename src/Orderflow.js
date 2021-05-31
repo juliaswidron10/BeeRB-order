@@ -70,12 +70,12 @@ function Orderflow() {
   //   const prevStep = current - 1;
   //   setCurrent(prevStep);
   // }
-  const handlemodal2 = () => {
-    setVisible2(!visible2);
-  };
+  // const handlemodal2 = () => {
+  //   setVisible2(!visible2);
+  // };
 
-  const [visible, setVisible] = useState(false);
-  const [visible2, setVisible2] = useState(false);
+  // const [visible, setVisible] = useState(false);
+  // const [visible2, setVisible2] = useState(false);
 
   const handlemodal = () => {
     console.log("handlmodal1");
@@ -90,7 +90,7 @@ function Orderflow() {
   return (
     <div className="orderflow">
       <Header />
-      {visible2 === true && <Beermodal handlemodal2={handlemodal2} visible2={visible2} />}
+      {/* {visible2 === true && <Beermodal handlemodal2={handlemodal2} visible2={visible2} />} */}
       {visible === true && <Paymentform handlemodal={handlemodal} visible={visible} next={next} />}
       <Steps current={current}>
         {steps.map((item) => (
