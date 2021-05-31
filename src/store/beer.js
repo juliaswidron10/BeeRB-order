@@ -33,16 +33,6 @@ export default function Beer(props) {
     });
   }
   const [isModalVisible, setIsModalVisible] = useState(false);
-  // const [displaydetails, setDetails] = useState(aroma)
-
-  // let displaydetails = 'props.description.aroma'
-
-  // function changedescription(button){
-  //   if(displaydetails !== button){
-  //     displaydetails = `props.description.${button}`;
-  //   }
-  // }
-
   const showModal = () => {
     setIsModalVisible(true);
   };

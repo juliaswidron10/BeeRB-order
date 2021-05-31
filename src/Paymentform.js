@@ -1,7 +1,9 @@
 import React from "react";
+// import {useState} from 'react';
 import "./App.scss";
 import "antd/dist/antd.css";
 import { Form, Input, Button, Space, Modal } from "antd";
+
 
 // post order here:
 // https://beerb-exam.herokuapp.com/order
@@ -12,7 +14,9 @@ import { Form, Input, Button, Space, Modal } from "antd";
 //   // props.next();
 // }
 
-function Paymentform(props) {
+export function Paymentform(props) {
+ 
+
   const [form] = Form.useForm(); //not sure if i need this "form" thingy
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
@@ -105,4 +109,4 @@ function Paymentform(props) {
   );
 }
 
-export { Paymentform };
+// export { Paymentform };
