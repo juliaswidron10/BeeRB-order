@@ -4,6 +4,7 @@ import "antd/dist/antd.css";
 import { Input, Button, Modal } from "antd";
 import MaskedInput from "antd-mask-input";
 
+
 // post order here:
 // https://beerb-exam.herokuapp.com/order
 
@@ -122,4 +123,4 @@ function Paymentform(props) {
   );
 }
 
-export { Paymentform };
+// export { Paymentform };

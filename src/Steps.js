@@ -1,7 +1,12 @@
 import React from "react";
+
+
 import "./App.scss";
 import "antd/dist/antd.css";
 import { Button } from "antd";
+import { Store } from "./store/store";
+import Basket from "./store/basket"
+
 
 function refreshPage() {
   window.location.reload(false);
@@ -9,6 +14,7 @@ function refreshPage() {
 
 function Step1(props) {
   return (
+
     <div className="step-container step-container-1">
       {/* add if statement about cart.length, if there is at least one product in the cart, add to cart */}
       <Button className="button btn-black" type="primary" onClick={() => props.handlemodal()}>
@@ -18,11 +24,14 @@ function Step1(props) {
   );
 }
 
+
 function Step2(props) {
-  console.log(props.current);
+  // console.log(props.current);
 
   return (
     <div className="step-container step-container-2">
+      <Basket beers={props.beers} basket={props.basket} addToBasket={props.addToBasket} />
+        {/* <Basket basket={getState(basket)}></Basket> */}
       {props.current === 0 && <p>Aren't you finding your best beer match? Ask our staff for recommendation!</p>}
       {props.current > 0 && (
         //  to do: order comes here
@@ -32,6 +41,7 @@ function Step2(props) {
       )}
     </div>
   );
+
 }
 
 function Step3(props) {

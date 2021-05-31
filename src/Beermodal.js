@@ -1,7 +1,7 @@
-import React from "react";
-import { Modal } from "antd";
-import "./App.scss";
-import "antd/dist/antd.css";
+// import React from "react";
+// import { Modal } from "antd";
+// import "./App.scss";
+// import "antd/dist/antd.css";
 
 function Beermodal(props) {
   return (
@@ -15,4 +15,4 @@ function Beermodal(props) {
   );
 }
 
-export { Beermodal };
+// export { Beermodal };
