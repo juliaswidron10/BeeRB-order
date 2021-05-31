@@ -92,7 +92,6 @@ function Orderflow() {
   };
 
   return (
-    // don't forget to add hidden class to orderflow
     <div className="orderflow">
       <Header />
       {visible2 === true && <Beermodal handlemodal2={handlemodal2} visible2={visible2} />}
