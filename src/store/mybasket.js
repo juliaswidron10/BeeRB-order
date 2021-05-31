@@ -1,9 +1,9 @@
-export default function MyBasket({ basket }) {
+export default function MyBasket(props) {
     return (
       <section className="MyBasket">
   
         <ul>
-          {basket.map((item) => (
+          {props.basket.map((item) => (
             <CartItem
               name={item.name}
               category={item.category}

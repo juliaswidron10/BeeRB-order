@@ -35,8 +35,8 @@ export const Store = (props) => {
   // } 
   return (
     <div className="App">
-      {/* <Inventory beers={props.products} addToBasket={props.addToBasket}  /> */}
-      {/* <Basket basket={props.basket} /> */}
+      <Inventory beers={props.beers} addToBasket={props.addToBasket}  />
+      
     </div>
   )
     }
