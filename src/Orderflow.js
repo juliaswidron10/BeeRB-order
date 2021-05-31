@@ -11,91 +11,42 @@ import { Beermodal } from "./Beermodal.js";
 import { useState, useEffect, useRef } from "react";
 
 const { Step } = Steps;
-
-
-// function Orderflow() {
-//   const [current, setCurrent] = React.useState(0);
-//   const myEl = useRef(null);
-//   const [products, setProducts] = useState([]);
-//   const [basket, setBasket] = useState([]);
-//   // const [start, setStart] = useState(0);
-
-//   useEffect(() => {
-//     fetch(`https://beerb-exam.herokuapp.com/beertypes`)
-//       .then((res) => res.json())
-//       .then(setProducts);
-//   });
-
-//   function addToBasket(payload) {
-//     const inBasket = basket.findIndex((item) => item.id === payload.id);
-//     if (inBasket === -1) {
-//       const nextPayload = { ...payload };
-//       nextPayload.amount = 1;
-//       setBasket((prevState) => [...prevState, nextPayload]);
-//     } else {
-//       const newBasket = basket.map((item) => {
-//         if (item.id === payload.id) {
-//           item.amount += 1;
-//         }
-//         return item;
-//       });
-//       setBasket(newBasket);
-//     }
-//   }
-
-//   function next() {
-//     console.log("next clicked");
-//     const nextStep = current + 1;
-//     setCurrent(nextStep);
-//     if (current === 1) {
-//       document.getElementsByClassName("App")[0].classList.add("page-slide-to-left");
-//     }
-//   }
-
-//   function prev() {
-//     const prevStep = current - 1;
-//     setCurrent(prevStep);
-//   }
   
-const steps = [
-  {
-    // step: 1,
-    title: "Select your beer",
 
-    current: 0,
-    content: (next, current, handlemodal) => <Step1 next={next} current={current} handlemodal={handlemodal} />,
-
-  },
-  {
-    // step: 2,
-    title: "Place your order",
-    current: 1,
-    content: (next, current, handlemodal) => <Step2 next={next} current={current} handlemodal={handlemodal} />,
-  },
-  {
-    // step: 3,
-    title: "A bit of a patience",
-    current: 2,
-    content: (next, current) => <Step3 next={next} current={current} />,
-  },
-  {
-    // step: 4,
-    title: "Pick up your order ",
-    current: 3,
-    content: (next, current) => <Step4 next={next} current={current} />,
-  },
-  {
-    // step: 5,
-    title: "Enjoy and repeat!",
-    current: 4,
-    content: (next, current) => <Step5 next={next} current={current} />,
-  },
-];
 
 
 function Orderflow() {
   const [current, setCurrent] = useState(0);
   const [visible, setVisible] = useState(false);
+  const myEl = useRef(null);
+  const [products, setProducts] = useState([]);
+  const [basket, setBasket] = useState([]);
+
+  // const [start, setStart] = useState(0);
+
+  useEffect(() => {
+    fetch(`https://beerb-exam.herokuapp.com/beertypes`)
+      .then((res) => res.json())
+      .then(setProducts);
+  });
+
+  function addToBasket(payload) {
+    const inBasket = basket.findIndex((item) => item.name === payload.name);
+    if (inBasket === -1) {
+      const nextPayload = { ...payload };
+      nextPayload.amount = 1 ;
+      setBasket((prevState) => [...prevState, nextPayload]);
+    } else {
+      const newBasket = basket.map((item) => {
+        if (item.name === payload.name) {
+          item.amount += 1;
+        }
+        return item;
+      });
+      setBasket(newBasket);
+    };
+  } 
+
 
   function next() {
     console.log("next clicked");
@@ -127,18 +78,18 @@ function Orderflow() {
     // don't forget to add hidden class to orderflow
     <div className="orderflow">
       <Header />
-      {visible === true && <Paymentform handlemodal={handlemodal} visible={visible} next={next} />}
+      {visible === true && <Paymentform addToBasket={addToBasket} handlemodal={handlemodal} visible={visible} next={next} />}
       {visible === true && <Beermodal handlemodal2={handlemodal} visible={visible} />}
       <Steps current={current}>
         {steps.map((item) => (
-          <Step key={item.title} title={item.title} />
+          <Step  key={item.title} title={item.title} />
         ))}
       </Steps>
       <div className="steps-content-container">
         {steps.map((item) => (
           <div key={item.title} className={`steps-content ${item.step !== current + 1}`}>
             {" "}
-            {item.content(next, current, handlemodal)}{" "}
+            {item.content(products, addToBasket, next, current, handlemodal)}{" "}
           </div>
         ))}
       </div>
@@ -164,4 +115,38 @@ function Orderflow() {
   );
 }
 
+const steps = [
+  {
+    // step: 1,
+    title: "Select your beer",
+
+    current: 0,
+    content: (products, addToBasket, next, current, handlemodal) => <Step1 beers={products} addToBasket={addToBasket} next={next} current={current} handlemodal={handlemodal} />,
+
+  },
+  {
+    // step: 2,
+    title: "Place your order",
+    current: 1,
+    content: (next, current, handlemodal) => <Step2 next={next} current={current} handlemodal={handlemodal} />,
+  },
+  {
+    // step: 3,
+    title: "A bit of a patience",
+    current: 2,
+    content: (next, current) => <Step3 next={next} current={current} />,
+  },
+  {
+    // step: 4,
+    title: "Pick up your order ",
+    current: 3,
+    content: (next, current) => <Step4 next={next} current={current} />,
+  },
+  {
+    // step: 5,
+    title: "Enjoy and repeat!",
+    current: 4,
+    content: (next, current) => <Step5 next={next} current={current} />,
+  },
+];
 export {Orderflow} ;

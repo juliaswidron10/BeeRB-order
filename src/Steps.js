@@ -1,10 +1,12 @@
 import React from "react";
-// 
+
+
 import "./App.scss";
 import "antd/dist/antd.css";
 import { Button } from "antd";
 import { Store } from "./store/store";
-// import Basket from "./store/basket"
+import Basket from "./store/basket"
+
 
 function refreshPage() {
   window.location.reload(false);
@@ -14,11 +16,12 @@ function Step1(props) {
   // const [basket, setBasket] = useState([]);
   // if()
   // const [basket, setBasket] = useState([]);
+  // const [basket, setBasket] = useState();
   return (
 
     <div className="step-container step-container-1">
       {/* add if statement about cart.length, if there is at least one product in the cart, add to cart */}
-         <Store />
+         <Store beers={props.products} addToBasket={props.addToBasket} />
       <Button className="button btn-black" type="primary" onClick={props.handlemodal2}>
         Add to cart
       </Button>
@@ -32,6 +35,7 @@ function Step2(props) {
 
   return (
     <div className="step-container step-container-2">
+        {/* <Basket basket={getState(basket)}></Basket> */}
       {props.current === 0 && <p>Aren't you finding your best beer match? Ask our staff for recommendation!</p>}
       {props.current > 0 && (
         //  to do: order comes here
