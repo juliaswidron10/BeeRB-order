@@ -6,7 +6,7 @@ export default function Inventory(props) {
           <main className="inventory-container">
             {/* {props.products.length === 0 && <Loader />} */}
             {props.beers.map((item) => (
-              <Beer addToBasket={props.addToBasket} {...item} key={item.label} />
+              <Beer addToBasket={props.addToBasket} {...item} key={item.label}/>
             ))}
 
 

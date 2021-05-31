@@ -8,6 +8,7 @@ export const Store = () => {
   const myEl = useRef(null);
   const [products, setProducts] = useState([]);
   const [basket, setBasket] = useState([]);
+
   // const [start, setStart] = useState(0);
 
   useEffect(() => {
@@ -17,24 +18,24 @@ export const Store = () => {
   });
 
   function addToBasket(payload) {
-    const inBasket = basket.findIndex((item) => item.id === payload.id);
+    const inBasket = basket.findIndex((item) => item.name === payload.name);
     if (inBasket === -1) {
       const nextPayload = { ...payload };
-      nextPayload.amount = 1;
+      nextPayload.amount = 1 ;
       setBasket((prevState) => [...prevState, nextPayload]);
     } else {
       const newBasket = basket.map((item) => {
-        if (item.id === payload.id) {
+        if (item.name === payload.name) {
           item.amount += 1;
         }
         return item;
       });
       setBasket(newBasket);
-    }
-  }
+    };
+  } 
   return (
     <div className="App">
-      <Inventory beers={products} addToBasket={addToBasket} />
+      <Inventory beers={products} addToBasket={addToBasket}  />
       <Basket basket={basket} />
     </div>
   )
