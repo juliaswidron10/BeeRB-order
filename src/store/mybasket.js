@@ -1,3 +1,5 @@
+import React from 'react';
+
 export default function MyBasket(props) {
     return (
       <section className="MyBasket">
@@ -8,7 +10,7 @@ export default function MyBasket(props) {
               name={item.name}
               category={item.category}
               amount={item.amount}
-              key={item.label}
+              key={item.name}
             />
           ))}
         </ul>
@@ -20,7 +22,7 @@ export default function MyBasket(props) {
   function CartItem(props) {
     return (
       <li>
-        {props.amount} {props.name} {props.category}
+        {props.amount} {props.name} {props.category} {props.key}
       </li>
     );
   }

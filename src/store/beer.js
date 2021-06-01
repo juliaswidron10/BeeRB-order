@@ -58,7 +58,7 @@ export default function Beer(props) {
                 <h1>{ amount }</h1>
                 <PlusCircleOutlined onClick={handleplus}/>
                 </div>
-                <Button onClick={() => props.addToBasket(props)}  className="button btn-black beer-button" type="primary">
+                <Button onClick={() => props.addToBasket(amount, amount)}  className="button btn-black beer-button" type="primary">
                     Add
                 </Button>
                 </Card>
@@ -77,7 +77,7 @@ export default function Beer(props) {
                   </div>
 
                   <div className="addingtobasket">
-                  <Button onClick={() => props.addToBasket(props)}  className="button btn-black beer-button" type="primary">
+                  <Button onClick={() => props.addToBasket(props, amount)}  className="button btn-black beer-button" type="primary">
                    Add
                   </Button>
                   <MinusCircleOutlined className="butt-add" onClick={handleminus} />

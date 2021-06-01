@@ -6,12 +6,47 @@ import { Header } from "./Header.js";
 
 import { Step1, Step2, Step3, Step4, Step5 } from "./Steps.js";
 import { Paymentform } from "./Paymentform.js";
-import { Orderpickupmodal } from "./Orderpickupmodal";
+// import { Orderpickupmodal } from "./Orderpickupmodal";
 import { Beermodal } from "./Beermodal.js";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
 const { Step } = Steps;
-  
+
+
+const steps = [
+  {
+    step: 1,
+    title: "Select your beer",
+
+    current: 0,
+    content: (basket, beers, addToBasket, next, current, handlemodal, handlemodal2) => <Step1 basket={basket} beers={beers} addToBasket={addToBasket} next={next} current={current} handlemodal={handlemodal}  handlemodal2={handlemodal2} />,
+
+  },
+  {
+    step: 2,
+    title: "Place your order",
+    current: 1,
+    content:(basket, beers, addToBasket, next, current, handlemodal, handlemodal2) => <Step2 basket={basket} beers={beers} addToBasket={addToBasket} next={next} current={current} handlemodal={handlemodal}  handlemodal2={handlemodal2}/>,
+  },
+  {
+    step: 3,
+    title: "A bit of a patience",
+    current: 2,
+    content: (basket, beers, addToBasket, next, current, handlemodal, handlemodal2) => <Step3 basket={basket} beers={beers} addToBasket={addToBasket} next={next} current={current}  handlemodal2={handlemodal2} />,
+  },
+  {
+    step: 4,
+    title: "Pick up your order ",
+    current: 3,
+    content: (basket, beers, addToBasket, next, current, handlemodal, handlemodal2) => <Step4 basket={basket} beers={beers} addToBasket={addToBasket} next={next} current={current}  handlemodal2={handlemodal2} />,
+  },
+  {
+    step: 5,
+    title: "Enjoy and repeat!",
+    current: 4,
+    content: ( basket, beers, addToBasket, next, current, handlemodal, handlemodal2)  => <Step5 basket={basket} beers={beers} addToBasket={addToBasket} next={next} current={current}  handlemodal2={handlemodal2} />,
+  },
+];  
 
 
 
@@ -19,9 +54,8 @@ function Orderflow() {
   const [current, setCurrent] = useState(0);
   const [visible, setVisible] = useState(false);
   const [visible2, setVisible2] = useState(false);
-  const myEl = useRef(null);
   const [beers, setBeers] = useState([]);
-  const [basket, setBasket] = useState([]);
+  
 
   // const [start, setStart] = useState(0);
 
@@ -29,18 +63,20 @@ function Orderflow() {
     fetch(`https://beerb-exam.herokuapp.com/beertypes`)
       .then((res) => res.json())
       .then(setBeers);
-  });
+  },[]);
 
-  function addToBasket(payload) {
+  const [basket, setBasket] = useState([]);
+  function addToBasket(payload, amount=1) {
+    console.log(payload);
     const inBasket = basket.findIndex((item) => item.name === payload.name);
     if (inBasket === -1) {
       const nextPayload = { ...payload };
-      nextPayload.amount = 1 ;
+      nextPayload.amount = amount ;
       setBasket((prevState) => [...prevState, nextPayload]);
     } else {
       const newBasket = basket.map((item) => {
         if (item.name === payload.name) {
-          item.amount += 1;
+          item.amount = amount;
         }
         return item;
       });
@@ -50,26 +86,11 @@ function Orderflow() {
 
 
   function next() {
-    // console.log("next clicked");
-    const nextStep = current + 1;
-    if (current === 0) {
+      console.log("next clicked");
+      const nextStep = current + 1;
       setCurrent(nextStep);
-    } else if (current === 1) {
-      setCurrent(nextStep);
-      document.getElementsByClassName("App")[0].classList.add("page-slide-to-left");
-    } else if (current === 2) {
-      setCurrent(nextStep);
-      Orderpickupmodal();
-    } else if (current === 4) {
-    } else {
-      setCurrent(current);
-    }
   }
 
-  // function prev() {
-  //   const prevStep = current - 1;
-  //   setCurrent(prevStep);
-  // }
   const handlemodal2 = () => {
     setVisible2(!visible2);
   };
@@ -82,8 +103,8 @@ function Orderflow() {
     // don't forget to add hidden class to orderflow
     <div className="orderflow">
       <Header />
-      {visible === true && <Paymentform handlemodal={handlemodal}  handlemodal2={handlemodal2} visible={visible} visible2={visible2} next={next} />}
-      {/* {visible === true && <Beermodal handlemodal2={handlemodal}  handlemodal2={handlemodal2} visible={visible} visible2={visible2} />} */}
+        {visible2 === true && <Beermodal handlemodal2={handlemodal2} visible2={visible2} />}
+      {visible === true && <Paymentform handlemodal={handlemodal} visible={visible} next={next} />}
       <Steps current={current}>
         {steps.map((item) => (
           <Step  key={item.title} title={item.title} />
@@ -119,38 +140,4 @@ function Orderflow() {
   );
 }
 
-const steps = [
-  {
-    // step: 1,
-    title: "Select your beer",
-
-    current: 0,
-    content: (basket, beers, addToBasket, next, current, handlemodal, handlemodal2) => <Step1 basket={basket} beers={beers} addToBasket={addToBasket} next={next} current={current} handlemodal={handlemodal}  handlemodal2={handlemodal2} />,
-
-  },
-  {
-    // step: 2,
-    title: "Place your order",
-    current: 1,
-    content:(basket, beers, addToBasket, next, current, handlemodal, handlemodal2) => <Step2 basket={basket} beers={beers} addToBasket={addToBasket} next={next} current={current} handlemodal={handlemodal}  handlemodal2={handlemodal2}/>,
-  },
-  {
-    // step: 3,
-    title: "A bit of a patience",
-    current: 2,
-    content: (basket, beers, addToBasket, next, current, handlemodal, handlemodal2) => <Step3 basket={basket} beers={beers} addToBasket={addToBasket} next={next} current={current}  handlemodal2={handlemodal2} />,
-  },
-  {
-    // step: 4,
-    title: "Pick up your order ",
-    current: 3,
-    content: (basket, beers, addToBasket, next, current, handlemodal, handlemodal2) => <Step4 basket={basket} beers={beers} addToBasket={addToBasket} next={next} current={current}  handlemodal2={handlemodal2} />,
-  },
-  {
-    // step: 5,
-    title: "Enjoy and repeat!",
-    current: 4,
-    content: ( basket, beers, addToBasket, next, current, handlemodal, handlemodal2)  => <Step5 basket={basket} beers={beers} addToBasket={addToBasket} next={next} current={current}  handlemodal2={handlemodal2} />,
-  },
-];
 export {Orderflow} ;

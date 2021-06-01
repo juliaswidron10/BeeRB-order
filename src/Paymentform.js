@@ -1,9 +1,10 @@
-import React from "react";
-// import {useState} from 'react';
+import { useState, useEffect, useRef } from "react";
 import "./App.scss";
 import "antd/dist/antd.css";
-import { Form, Input, Button, Space, Modal } from "antd";
-
+import { Input, Button, Modal, Result } from "antd";
+import MaskedInput from "antd-mask-input";
+import ReactCardFlip from "react-card-flip";
+import { SmileOutlined } from "@ant-design/icons";
 
 // post order here:
 // https://beerb-exam.herokuapp.com/order
@@ -14,13 +15,30 @@ import { Form, Input, Button, Space, Modal } from "antd";
 //   // props.next();
 // }
 
-export function Paymentform(props) {
- 
+function Paymentform(props) {
+  // const [form] = Form.useForm(); //not sure if i need this "form" thingy
+  // const onFinish = (values) => {
+  //   console.log("Received values of form: ", values);
+  // };
 
-  const [form] = Form.useForm(); //not sure if i need this "form" thingy
-  const onFinish = (values) => {
-    console.log("Received values of form: ", values);
-  };
+  const [name, setName] = useState("");
+  const [cardnumber, setCardNumber] = useState("");
+  const [expirydate, setExpiryDate] = useState("");
+  const [cvv, setCVV] = useState("");
+  const [isValid, setIsValid] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  const form = useRef(null);
+
+  useEffect(() => {
+    const onlynumbers = /^[0-9]+$/;
+    const isCardNumberValid =
+      cardnumber.replaceAll(" ", "").length === 16 && cardnumber.replaceAll(" ", "").match(onlynumbers);
+    const isExpiryDateValid =
+      expirydate.replace("/", "").length === 4 && expirydate.replace("/", "").match(onlynumbers);
+    const isCvvValid = cvv.length === 3 && cvv.match(onlynumbers);
+    setIsValid(form.current.checkValidity() && isCardNumberValid && isExpiryDateValid && isCvvValid);
+  }, [name, cardnumber, expirydate, cvv]);
 
   // const handleOk = (schoolRollOutRequestForm) => {
   //   //  post order to database
@@ -30,83 +48,113 @@ export function Paymentform(props) {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    props.handlemodal();
-    props.next();
+    setSubmitted(true);
+    // props.handlemodal();
+    // props.next();
 
     // setInterval(() => {
     //   props.next();
     // }, 3000);
   }
 
+  function handleClose(evt) {
+    evt.preventDefault();
+    props.handlemodal();
+    step2next();
+  }
+
+  function step2next() {
+    props.next();
+    document.getElementsByClassName("App")[0].classList.add("page-slide-to-left");
+  }
+
   return (
-    <div className="modal payment-modal">
-      <Modal destroyOnClose title="Payment" visible={props.visible} onCancel={props.handlemodal}>
-        {/* <div className="payment-header">
+    <div>
+      <Modal
+        destroyOnClose
+        title="Payment"
+        visible={props.visible}
+        onCancel={props.handlemodal}
+        className="payment-modal"
+      >
+        <ReactCardFlip isFlipped={submitted}>
+          {/* <div className="payment-header">
           <h1>Payment</h1>
           <p>Please enter your card information here</p>
         </div> */}
-        <Form
-          form={form}
-          layout="vertical"
-          name="complex-form"
-          onFinish={onFinish}
-          labelCol={{ span: 100 }}
-          wrapperCol={{ span: 16 }}
-        >
-          <Form.Item label="Card number">
-            <Space>
-              <Form.Item
-                type="number"
-                name="cardnumber"
-                noStyle
-                rules={[{ required: true, minlength: "4", message: "Enter a valid card number" }]}
-              >
-                <Input style={{ width: 300 }} placeholder="Card number" />
-              </Form.Item>
-            </Space>
-          </Form.Item>
 
-          <Form.Item label="Name on card">
-            <Space>
-              <Form.Item
-                name="nameoncard"
-                noStyle
-                rules={[{ required: true, message: "Enter your name exactly as it is written in your card" }]}
-              >
-                <Input style={{ width: 300 }} placeholder="Name on card" />
-              </Form.Item>
-            </Space>
-          </Form.Item>
+          <form ref={form}>
+            <div className="payment-modal-header">
+              <h1>Payment</h1>
+              <p>Please enter your card information here.</p>
+            </div>
+            <div className="payment-grid">
+              <div className="form-layout div1">
+                <label htmlFor="name">Cardholder's name</label>
+                <Input
+                  id="name"
+                  type="text"
+                  required
+                  minLength="2"
+                  maxLength="26"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </div>
 
-          <Form.Item label="Expiration date (MM/YY)" style={{ marginBottom: 0 }}>
-            <Form.Item
-              name="expirationdate"
-              rules={[{ required: true, message: "Enter a valid card expiration date" }]}
-            >
-              <Input style={{ width: 150 }} placeholder="(MM/YY)" />
-            </Form.Item>
-          </Form.Item>
+              <div className="form-layout div2">
+                <label htmlFor="cardnumber">Card number</label>
+                <MaskedInput
+                  mask="1111 1111 1111 1111"
+                  value={cardnumber}
+                  className="ant-input"
+                  onChange={(e) => setCardNumber(e.target.value)}
+                  required
+                />
+              </div>
 
-          <Form.Item label="CVV">
-            <Space>
-              <Form.Item
-                name="cvv"
-                noStyle
-                rules={[{ required: true, message: "Enter the 3-digit security code on the back of your card" }]}
-              >
-                <Input style={{ width: 100 }} placeholder="CVV" />
-              </Form.Item>
-            </Space>
-          </Form.Item>
-          <Form.Item label=" " colon={false}>
-            <Button className="btn-orange" type="primary" htmlType="submit" onClick={handleSubmit}>
+              <div className="form-layout div3">
+                <label htmlFor="expirydate">Expiry date (MM/YY)</label>
+                <MaskedInput
+                  mask="11/11"
+                  className="ant-input"
+                  required
+                  value={expirydate}
+                  onChange={(e) => setExpiryDate(e.target.value)}
+                />
+              </div>
+              <div className="form-layout div4">
+                <label htmlFor="cvv">CVV</label>
+                <MaskedInput
+                  mask="111"
+                  value={cvv}
+                  className="ant-input"
+                  onChange={(e) => setCVV(e.target.value)}
+                  required
+                />
+              </div>
+            </div>
+            <Button className="div5" type="primary" htmlType="submit" disabled={!isValid} onClick={handleSubmit}>
               Complete payment
             </Button>
-          </Form.Item>
-        </Form>
+          </form>
+          <Result
+            title="Your order is on the way!"
+            subTitle="Order number: 2017182818828182881"
+            icon={<SmileOutlined />}
+            extra={[
+              <div key="header" className="payment-modal-thankyou-extra">
+                <p>We'll notify you when the order is ready for pickup.</p>
+              </div>,
+              <Button type="primary" key="console" onClick={handleClose}>
+                Continue
+              </Button>,
+            ]}
+          />
+        </ReactCardFlip>
       </Modal>
     </div>
   );
 }
 
-// export { Paymentform };
+export { Paymentform };
