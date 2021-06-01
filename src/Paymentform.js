@@ -28,9 +28,12 @@ function Paymentform(props) {
   const form = useRef(null);
 
   useEffect(() => {
-    const isCardNumberValid = cardnumber.replaceAll(" ", "").length === 16;
-    const isExpiryDateValid = expirydate.replace("/", "").length === 4;
-    const isCvvValid = cvv.replace("/", "").length === 3;
+    const onlynumbers = /^[0-9]+$/;
+    const isCardNumberValid =
+      cardnumber.replaceAll(" ", "").length === 16 && cardnumber.replaceAll(" ", "").match(onlynumbers);
+    const isExpiryDateValid =
+      expirydate.replace("/", "").length === 4 && expirydate.replace("/", "").match(onlynumbers);
+    const isCvvValid = cvv.length === 3 && cvv.match(onlynumbers);
     setIsValid(form.current.checkValidity() && isCardNumberValid && isExpiryDateValid && isCvvValid);
   }, [name, cardnumber, expirydate, cvv]);
 
