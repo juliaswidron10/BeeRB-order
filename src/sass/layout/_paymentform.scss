@@ -171,12 +171,13 @@
   form {
     width: 70%;
     margin: 0 auto;
-
-    display: grid;
-    grid-template-columns: repeat(3, 1fr) repeat(2, 0);
-    grid-template-rows: repeat(3, 1fr) 0 1fr;
-    grid-column-gap: 20px;
-    grid-row-gap: 10px;
+    .payment-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr) repeat(2, 0);
+      grid-template-rows: repeat(3, 1fr) 0 1fr;
+      grid-column-gap: 20px;
+      grid-row-gap: 10px;
+    }
 
     .div1 {
       grid-area: 1 / 1 / 2 / 4;

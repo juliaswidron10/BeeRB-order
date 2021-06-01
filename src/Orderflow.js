@@ -5,7 +5,6 @@ import "antd/dist/antd.css";
 import { Header } from "./Header.js";
 import { Step1, Step2, Step3, Step4, Step5 } from "./Steps.js";
 import { Paymentform } from "./Paymentform.js";
-import { Orderpickupmodal } from "./Orderpickupmodal";
 import { Beermodal } from "./Beermodal.js";
 
 const { Step } = Steps;
@@ -59,18 +58,7 @@ function Orderflow() {
   function next() {
     console.log("next clicked");
     const nextStep = current + 1;
-    if (current === 0) {
-      setCurrent(nextStep);
-    } else if (current === 1) {
-      setCurrent(nextStep);
-      document.getElementsByClassName("App")[0].classList.add("page-slide-to-left");
-    } else if (current === 2) {
-      setCurrent(nextStep);
-      Orderpickupmodal();
-    } else if (current === 4) {
-    } else {
-      setCurrent(nextStep);
-    }
+    setCurrent(nextStep);
   }
 
   // function prev() {

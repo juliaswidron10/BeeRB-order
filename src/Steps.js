@@ -2,16 +2,21 @@ import React from "react";
 import "./App.scss";
 import "antd/dist/antd.css";
 import { Button } from "antd";
+import { Orderpickupmodal } from "./Orderpickupmodal";
 
 function refreshPage() {
   window.location.reload(false);
 }
 
+// function step1next() {
+//   next();
+// }
+
 function Step1(props) {
   return (
     <div className="step-container step-container-1">
       {/* add if statement about cart.length, if there is at least one product in the cart, add to cart */}
-      <Button className="button btn-black" type="primary" onClick={() => props.handlemodal()}>
+      <Button className="button btn-black" type="primary" onClick={() => props.next()}>
         Add to cart
       </Button>
     </div>
@@ -38,7 +43,7 @@ function Step3(props) {
   if (props.current === 2) {
     setTimeout(() => {
       props.next();
-      // Orderpickupmodal();
+      Orderpickupmodal();
     }, 3000);
   }
 
