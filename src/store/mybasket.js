@@ -4,10 +4,10 @@ import {useState} from 'react';
 
 export default function MyBasket(props) {
   //  const [total, setTotal] = useState(0);
-   function getTotal(amount){
-     let tot = amount * 75
-     return tot
-   }
+  //  function getTotal(amount){
+  //    let tot = amount * 75
+  //    return tot
+  //  }
   console.log(props.basket);
     return (
       <section className="MyBasket">
