@@ -109,6 +109,21 @@
     cursor: pointer;
     width: 100%;
 }
+
+//STYLING BASKET
+.MyBasket ul{
+    list-style: none;
+    margin: 0 !important; 
+    padding: 0;
+}
+.basket-display{
+    display: flex;
+}
+.basket-display img{
+    height: 50px;
+    width: auto;
+    border-radius: 6px;
+}
 // .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn{
 //     color: black !important;
 // }

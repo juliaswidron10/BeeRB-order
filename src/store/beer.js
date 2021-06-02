@@ -1,5 +1,5 @@
 import React from 'react';
-import elhefe from '../beers/elhefe.png';
+
 import { Card } from 'antd';
 import { Button } from "antd";
 import { PlusCircleOutlined, MinusCircleOutlined } from '@ant-design/icons';
@@ -50,7 +50,7 @@ export default function Beer(props) {
                 <Card 
                 hoverable
                 style={{ width: 200 }}
-                 cover={<img onClick={showModal} alt="example" src={elhefe} />} >
+                 cover={<img onClick={showModal} alt="example" src={process.env.PUBLIC_URL+`/beers/${props.label}`} />} >
                 <Meta title={props.name} description={props.category} />
                 <div className="beer-add">
                 
@@ -58,14 +58,16 @@ export default function Beer(props) {
                 <h1>{ amount }</h1>
                 <PlusCircleOutlined onClick={handleplus}/>
                 </div>
-                <Button onClick={() => props.addToBasket(amount, amount)}  className="button btn-black beer-button" type="primary">
+                <Button onClick={() => props.addToBasket(props, amount)}  className="button btn-black beer-button" type="primary">
                     Add
                 </Button>
+
+
                 </Card>
               
                 <Modal className="beersdetailsmodal" title="Beerdetails" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
                   <aside>
-                   <img src={elhefe} />
+                   <img src={process.env.PUBLIC_URL+`/beers/${props.label}`} alt="beer label" />
                   </aside>
                   <div>
                   <div className="beer-details-heading">
