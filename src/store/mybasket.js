@@ -15,15 +15,16 @@ export default function MyBasket(props) {
         <ul>
           {props.basket.map((item) => (
             <CartItem
+            total ={props.total}
               name={item.name}
               category={item.category}
               amount={item.amount}
               key={item.name}
               label={item.label}
-              // total={getTotal(item.amount)}
             />
           ))}
         </ul>
+        <div className="total-basket"><h2>Total:</h2><h2>{props.total}</h2></div>
       </section>
     );
   }
@@ -32,19 +33,27 @@ export default function MyBasket(props) {
   
   function CartItem(props) {
     const [amount, setAmount] = useState(props.amount);
+    const [localtotal, setlocalTotal] = useState(amount * 75);
 
+    function getlocalTotal(){
+      let newTotal = 0;
+      newTotal = amount * 75;
+      setlocalTotal(newTotal);
+    }
     function handleminus(evt) {
     if(props.amount > 0){
       setAmount((prevState) => {
         return prevState - 1;
       });
     }
+    getlocalTotal();
   };
 
   function handleplus(evt) {
     setAmount((prevState) => {
       return prevState + 1;
     });
+    getlocalTotal();
   }
     return (
       <li className="basket-display">
@@ -53,7 +62,7 @@ export default function MyBasket(props) {
       <p>{amount}</p>
             <PlusCircleOutlined onClick={handleplus}/></div>
      
-      <div><h1>{props.name} {props.total}</h1></div>
+      <div><h1>{props.name} {localtotal}</h1></div>
       </li>
     );
   }

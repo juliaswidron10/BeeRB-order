@@ -15,7 +15,12 @@ function Step1(props) {
   return (
       <div className="step-container step-container-1">
       {/* add if statement about cart.length, if there is at least one product in the cart, add to cart */}
-      <Store beers={props.beers} basket={props.basket} addToBasket={props.addToBasket} />
+      <Store 
+        beerPrices={props.beerPrices} 
+        total={props.total} 
+        beers={props.beers} 
+        basket={props.basket} 
+        addToBasket={props.addToBasket} />
       <Button className="button btn-black" type="primary" onClick={() => props.next()}>
         Add to cart
       </Button>
@@ -28,7 +33,12 @@ function Step2(props) {
   console.log(props.current);
   return (
     <div className="step-container step-container-2">
-      <Basket beers={props.beers} basket={props.basket} addToBasket={props.addToBasket}/>
+      <Basket 
+        beerPrices={props.beerPrices} 
+        total={props.total} 
+        beers={props.beers} 
+        basket={props.basket} 
+        addToBasket={props.addToBasket}/>
       
       {props.current > 0 && (
         //  to do: order comes here

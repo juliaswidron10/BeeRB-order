@@ -3,7 +3,6 @@ import { Steps, Button, message } from "antd";
 import "./App.scss";
 import "antd/dist/antd.css";
 import { Header } from "./Header.js";
-
 import { Step1, Step2, Step3, Step4, Step5 } from "./Steps.js";
 import { Paymentform } from "./Paymentform.js";
 // import { Orderpickupmodal } from "./Orderpickupmodal";
@@ -19,32 +18,32 @@ const steps = [
     title: "Select your beer",
 
     current: 0,
-    content: (basket, beers, addToBasket, next, current, handlemodal, handlemodal2) => <Step1 basket={basket} beers={beers} addToBasket={addToBasket} next={next} current={current} handlemodal={handlemodal}  handlemodal2={handlemodal2} />,
+    content: (total, basket, beers, addToBasket, next, current, handlemodal, handlemodal2) => <Step1 total={total} basket={basket} beers={beers} addToBasket={addToBasket} next={next} current={current} handlemodal={handlemodal}  handlemodal2={handlemodal2} />,
 
   },
   {
     step: 2,
     title: "Place your order",
     current: 1,
-    content:(basket, beers, addToBasket, next, current, handlemodal, handlemodal2) => <Step2 basket={basket} beers={beers} addToBasket={addToBasket} next={next} current={current} handlemodal={handlemodal}  handlemodal2={handlemodal2}/>,
+    content:(total, basket, beers, addToBasket, next, current, handlemodal, handlemodal2) => <Step2 total={total} basket={basket} beers={beers} addToBasket={addToBasket} next={next} current={current} handlemodal={handlemodal}  handlemodal2={handlemodal2}/>,
   },
   {
     step: 3,
     title: "A bit of a patience",
     current: 2,
-    content: (basket, beers, addToBasket, next, current, handlemodal, handlemodal2) => <Step3 basket={basket} beers={beers} addToBasket={addToBasket} next={next} current={current}  handlemodal2={handlemodal2} />,
+    content: (total, basket, beers, addToBasket, next, current, handlemodal, handlemodal2) => <Step3 total={total} basket={basket} beers={beers} addToBasket={addToBasket} next={next} current={current}  handlemodal2={handlemodal2} />,
   },
   {
     step: 4,
     title: "Pick up your order ",
     current: 3,
-    content: (basket, beers, addToBasket, next, current, handlemodal, handlemodal2) => <Step4 basket={basket} beers={beers} addToBasket={addToBasket} next={next} current={current}  handlemodal2={handlemodal2} />,
+    content: (total, basket, beers, addToBasket, next, current, handlemodal, handlemodal2) => <Step4 total={total} basket={basket} beers={beers} addToBasket={addToBasket} next={next} current={current}  handlemodal2={handlemodal2} />,
   },
   {
     step: 5,
     title: "Enjoy and repeat!",
     current: 4,
-    content: ( basket, beers, addToBasket, next, current, handlemodal, handlemodal2)  => <Step5 basket={basket} beers={beers} addToBasket={addToBasket} next={next} current={current}  handlemodal2={handlemodal2} />,
+    content: (total, basket, beers, addToBasket, next, current, handlemodal, handlemodal2)  => <Step5 total={total} basket={basket} beers={beers} addToBasket={addToBasket} next={next} current={current}  handlemodal2={handlemodal2} />,
   },
 ];  
 
@@ -67,12 +66,12 @@ function Orderflow() {
 
   const [basket, setBasket] = useState([]);
   function addToBasket(payload, amount=1) {
-    console.log(payload);
     const inBasket = basket.findIndex((item) => item.name === payload.name);
     if (inBasket === -1) {
       const nextPayload = { ...payload };
       nextPayload.amount = amount ;
       setBasket((prevState) => [...prevState, nextPayload]);
+      updateTotal();
     } else {
       const newBasket = basket.map((item) => {
         if (item.name === payload.name) {
@@ -81,10 +80,23 @@ function Orderflow() {
         return item;
       });
       setBasket(newBasket);
+      updateTotal();
     };
   } 
 
 
+  const [total, setTotal] = useState(0);
+  function updateTotal() {
+    
+    let itemsOrdered = 0
+    setTotal(basket.forEach((item)=>{
+      console.log(item.amount)
+      itemsOrdered = itemsOrdered + item.amount;
+    }))
+    let newTotal = itemsOrdered * 75;
+    setTotal(newTotal)
+    // return newTotal
+  }
   function next() {
       console.log("next clicked");
       const nextStep = current + 1;
@@ -114,7 +126,7 @@ function Orderflow() {
         {steps.map((item) => (
           <div key={item.title} className={`steps-content ${item.step !== current + 1}`}>
             {" "}
-            {item.content(basket,beers, addToBasket, next, current, handlemodal, handlemodal2)}{" "}
+            {item.content(total,basket,beers, addToBasket, next, current, handlemodal, handlemodal2)}{" "}
           </div>
         ))}
       </div>
