@@ -2,7 +2,7 @@ import React from 'react';
 import { Card } from 'antd';
 import { Button } from "antd";
 import { PlusCircleOutlined, MinusCircleOutlined } from '@ant-design/icons';
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 import { Modal } from "antd";
 import { Tabs } from 'antd';
 const { TabPane } = Tabs;
@@ -14,24 +14,24 @@ const { Meta } = Card;
 
 export default function Beer(props) {
 
-  const [activeBeers, setActive] = useState([])
+  // const [activeBeers, setActive] = useState([])
 
-  useEffect(() => {
-    setInterval(() =>{ 
-      fetch(`https://beerb-exam.herokuapp.com/`)
-        .then(response => response.json())
-        .then(data => setActive(data.taps)); }
-      , 1000)} ,[]);
-      // console.log(activeBeers);
+  // useEffect(() => {
+  //   setInterval(() =>{ 
+  //     fetch(`https://beerb-exam.herokuapp.com/`)
+  //       .then(response => response.json())
+  //       .then(data => setActive(data.taps)); }
+  //     , 1000)} ,[]);
+  //     // console.log(activeBeers);
   
-  function getactive(){
-    activeBeers.map(e =>{
-    if(e.beer === props.name) {
-      return 'activeBeers'
-    }else{
-      return 'notactiveBeers'
-    }})
-  }
+  // function getactive(){
+  //   activeBeers.map(e =>{
+  //   if(e.beer === props.name) {
+  //     return 'activeBeers'
+  //   }else{
+  //     return 'notactiveBeers'
+  //   }})
+  // }
 
 
   const [amount, setAmount] = useState(0);
@@ -67,7 +67,6 @@ export default function Beer(props) {
               
                 <Card 
                   hoverable
-                  className={getactive}
                   style={{ width: 200 }}
                   cover={ <img onClick={showModal} alt="example" src={process.env.PUBLIC_URL+`/beers/${props.label}`} />} >
                   
