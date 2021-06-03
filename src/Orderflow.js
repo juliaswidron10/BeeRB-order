@@ -34,7 +34,7 @@ const steps = [
     step: 2,
     title: "Place your order",
     current: 1,
-    content: (total, basket, beers, addToBasket, next, current, handlemodal, handlemodal2) => (
+    content: (total, basket, beers, addToBasket, next, current, handlemodal, handlemodal2, post) => (
       <Step2
         total={total}
         basket={basket}
@@ -44,6 +44,7 @@ const steps = [
         current={current}
         handlemodal={handlemodal}
         handlemodal2={handlemodal2}
+        post={post}
       />
     ),
   },
@@ -51,7 +52,7 @@ const steps = [
     step: 3,
     title: "A bit of a patience",
     current: 2,
-    content: (total, basket, beers, addToBasket, next, current, handlemodal, handlemodal2) => (
+    content: (total, basket, beers, addToBasket, next, current, handlemodal, handlemodal2, post) => (
       <Step3
         total={total}
         basket={basket}
@@ -60,6 +61,7 @@ const steps = [
         next={next}
         current={current}
         handlemodal2={handlemodal2}
+        post={post}
       />
     ),
   },
@@ -67,7 +69,7 @@ const steps = [
     step: 4,
     title: "Pick up your order ",
     current: 3,
-    content: (total, basket, beers, addToBasket, next, current, handlemodal, handlemodal2) => (
+    content: (total, basket, beers, addToBasket, next, current, handlemodal, handlemodal2, post) => (
       <Step4
         total={total}
         basket={basket}
@@ -76,6 +78,7 @@ const steps = [
         next={next}
         current={current}
         handlemodal2={handlemodal2}
+        post={post}
       />
     ),
   },
@@ -83,7 +86,7 @@ const steps = [
     step: 5,
     title: "Enjoy and repeat!",
     current: 4,
-    content: (total, basket, beers, addToBasket, next, current, handlemodal, handlemodal2) => (
+    content: (total, basket, beers, addToBasket, next, current, handlemodal, handlemodal2, post) => (
       <Step5
         total={total}
         basket={basket}
@@ -92,6 +95,7 @@ const steps = [
         next={next}
         current={current}
         handlemodal2={handlemodal2}
+        post={post}
       />
     ),
   },
@@ -149,6 +153,35 @@ function Orderflow() {
     const nextStep = current + 1;
     setCurrent(nextStep);
   }
+
+  // post order here:
+  // https://beerb-exam.herokuapp.com/order
+
+  // function post() {
+  //   const dataToPost = basket.map((item) => {
+  //     return { name: item.name, amount: item.amount };
+  //   });
+  //   console.log(dataToPost);
+
+  //   const postData = JSON.stringify(dataToPost);
+  //   fetch("https://beerb-exam.herokuapp.com/order", {
+  //     method: "post",
+  //     body: postData,
+  //     headers: {
+  //       "Content-Type": "application/json; charset=utf-8",
+  //     },
+  //   })
+  //     .then((res) => res.json())
+  //     .then((res) => {
+  //       if (res.message === "added") {
+  //         console.log(res);
+  //         setOrderNumber(res.id);
+  //         setCart([]);
+  //       }
+  //     });
+  // }
+
+  // post();
 
   const handlemodal = () => {
     console.log("handlmodal1");

@@ -31,31 +31,54 @@ function Step1(props) {
 
 function Step2(props) {
   console.log(props.current);
-  return (
-    <div className="step-container step-container-2">
-      {/* conditional renderring */}
-      {props.current === 0 && (
+  console.log(props.basket.length);
+  if (props.basket.length === 0) {
+    console.log("0 termek a kosarban");
+    return (
+      <div className="step-container step-container-2">
         <p className="placeholder-basket">Aren't you finding your best beer match? Ask our staff for recommendation!</p>
-      )}
-      {props.current > 0 && (
-        <div>
-          <Basket
-            beerPrices={props.beerPrices}
-            total={props.total}
-            beers={props.beers}
-            basket={props.basket}
-            addToBasket={props.addToBasket}
-          />
-          <Button className="button btn-yellow" type="primary" onClick={() => props.handlemodal()}>
-            Place order
-          </Button>
-        </div>
-      )}
-    </div>
-  );
+      </div>
+    );
+  } else if (props.basket.length === 1 && props.current === 0) {
+    console.log("1 termek a kosarban, current 0");
+    props.next();
+    return (
+      <div className="step-container step-container-2">
+        <Basket
+          beerPrices={props.beerPrices}
+          total={props.total}
+          beers={props.beers}
+          basket={props.basket}
+          addToBasket={props.addToBasket}
+        />
+        <Button className="button btn-yellow" type="primary" onClick={() => props.handlemodal()}>
+          Place order
+        </Button>
+      </div>
+    );
+  } else if (props.basket.length > 0 && props.current > 0) {
+    console.log("1 termek a kosarban, current > 1");
+    return (
+      <div className="step-container step-container-2">
+        <Basket
+          beerPrices={props.beerPrices}
+          total={props.total}
+          beers={props.beers}
+          basket={props.basket}
+          addToBasket={props.addToBasket}
+        />
+        <Button className="button btn-yellow" type="primary" onClick={() => props.handlemodal()}>
+          Place order
+        </Button>
+      </div>
+    );
+  } else {
+    return null;
+  }
 }
 
 function Step3(props) {
+  // props.post();
   // console.log('we are at the step 3')
   if (props.current === 2) {
     setTimeout(() => {

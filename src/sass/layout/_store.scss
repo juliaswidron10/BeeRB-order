@@ -72,6 +72,15 @@
 // }
 
 //STYLING MODAL WITH BEERS DETAILS
+
+.ant-tabs-tab + .ant-tabs-tab {
+  margin: 0 0 0 10px !important;
+}
+
+.ant-tabs-tab {
+  font-size: 1.2vw !important;
+}
+
 .beersdetailsmodal {
   width: 80vw !important;
   margin-left: 5vw;

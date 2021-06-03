@@ -6,9 +6,6 @@ import MaskedInput from "antd-mask-input";
 import ReactCardFlip from "react-card-flip";
 import { SmileOutlined } from "@ant-design/icons";
 
-// post order here:
-// https://beerb-exam.herokuapp.com/order
-
 // function closePaymentModal() {
 //   console.log("closepay");
 //   document.getElementsByClassName("payment-modal")[0].classList.add("hidden");
