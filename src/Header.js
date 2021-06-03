@@ -26,7 +26,8 @@ export class Header1 extends React.Component {
         {/* <div className="info-icon-container">
           <div className="info-icon" onClick={this.showHomepage.bind(this)}></div>
         </div> */}
-        <h1>Beer selection</h1>
+        {/* <h1>Beer selection</h1> */}
+        <div className="logo"></div>
         <p>Take your time to go through the selection, we are sure you’ll find something tasty!</p>
       </div>
     );

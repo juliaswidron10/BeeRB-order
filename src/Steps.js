@@ -66,11 +66,11 @@ function Step3(props) {
   return (
     <div className="step-container step-container-3">
       {/* to do: add bartender name instead of jonas */}
-      <p>Give Jonas some time to finish your order.</p>
+      <p>Give us some time to finish your order.</p>
       <p>
         <strong>We’ll notify you once it’s ready for pickup!</strong>
       </p>
-      <p className="queue-number-text">You are number 4 in the queue</p>
+      {/* <p className="queue-number-text">You are number 4 in the queue</p> */}
     </div>
   );
 }
@@ -86,7 +86,7 @@ function Step4(props) {
       {props.current > 2 && (
         <div>
           <p>
-            You can now pickup your order at the bar! <br></br>Just tell Jonas your order ID.
+            You can now pickup your order at the bar! <br></br>Just show your order ID.
           </p>{" "}
           <p className="queue-number-text">Order id: #</p>
         </div>
@@ -99,7 +99,7 @@ function Step5(props) {
   return (
     <div className="step-container step-container-4">
       {props.current > 3 && (
-        <Button className="button btn-orange" type="primary" onClick={refreshPage}>
+        <Button className="button btn-yellow" type="primary" onClick={refreshPage}>
           Order again
         </Button>
       )}

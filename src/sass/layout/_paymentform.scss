@@ -150,6 +150,11 @@
 }
 
 .payment-modal {
+  .completePaymentbutton {
+    margin-top: 2rem;
+    width: 100% !important;
+  }
+
   .payment-modal-header {
     margin-top: -1.8em;
     padding-bottom: 1.5rem;
@@ -164,8 +169,9 @@
   p {
     display: flex;
     justify-content: center;
+    text-align: center;
     font-family: "Courier-Prime-Regular";
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 
   form {
@@ -173,8 +179,8 @@
     margin: 0 auto;
     .payment-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr) repeat(2, 0);
-      grid-template-rows: repeat(3, 1fr) 0 1fr;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
       grid-column-gap: 20px;
       grid-row-gap: 10px;
     }
@@ -191,9 +197,6 @@
     .div4 {
       grid-area: 3 / 3 / 4 / 4;
     }
-    .div5 {
-      grid-area: 5 / 1 / 6 / 4;
-    }
 
     .form-layout {
     }
@@ -202,5 +205,38 @@
       font-family: "Courier-Prime-Bold";
       font-size: 1rem;
     }
+  }
+}
+
+// styling result page
+.ant-result {
+  padding: 0px 32px !important;
+
+  .anticon-smile {
+    color: $pink !important;
+  }
+
+  .ant-result-title {
+    font-family: "Dela-Gothic-One-Regular";
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .ant-result-subtitle {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-family: "Courier-Prime-Regular";
+    font-size: 0.8rem;
+  }
+
+  .payment-modal-thankyou-extra {
+    font-family: "Dela-Gothic-One-Regular" !important;
+    font-size: 0.8rem;
+  }
+
+  .btn-black {
+    margin-top: 3rem;
   }
 }
