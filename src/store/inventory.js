@@ -26,15 +26,19 @@ export default function Inventory(props) {
   return (
     <main className="inventory-container">
       {/* {props.products.length === 0 && <Loader />} */}
-      {props.beers.map((item) =>
-        activeBeers.map((e) => {
-          if (e === item.name) {
-            return <Beer addToBasket={props.addToBasket} {...item} key={item.name} total={props.total} />;
-          } else {
-            return null;
-          }
-        })
-      )}
+
+      {props.beers.map((item) => (
+               activeBeers.map((e) => {
+                  if(e === item.name) {
+                    return <Beer 
+                      addToBasket={props.addToBasket} 
+                      {...item} 
+                      key={item.name}
+                      total={props.total}
+                />
+                  }else{
+                    return null
+                  }})))}    
     </main>
   );
 }
