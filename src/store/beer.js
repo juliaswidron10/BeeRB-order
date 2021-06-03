@@ -31,7 +31,7 @@ export default function Beer(props) {
   //     return 'notactiveBeers'
   //   }})
   // }
-
+ 
   const [amount, setAmount] = useState(0);
   function handleminus(evt) {
     if (amount > 0) {
