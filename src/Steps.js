@@ -10,14 +10,9 @@ function refreshPage() {
   window.location.reload(false);
 }
 
-// function step1next() {
-//   next();
-// }
-
 function Step1(props) {
   return (
     <div className="step-container step-container-1">
-      {/* add if statement about cart.length, if there is at least one product in the cart, add to cart */}
       <Store
         beerPrices={props.beerPrices}
         total={props.total}
@@ -30,18 +25,18 @@ function Step1(props) {
 }
 
 function Step2(props) {
-  console.log(props.current);
-  console.log(props.basket.length);
-  // console.log(props.orderNumber);
+  console.log(`current number:` + props.current);
+  console.log(`number of items in the basket:` + props.basket.length);
+
   if (props.basket.length === 0) {
-    console.log("0 termek a kosarban");
+    console.log("0 items in the basket");
     return (
       <div className="step-container step-container-2">
         <p className="placeholder-basket">Aren't you finding your best beer match? Ask our staff for recommendation!</p>
       </div>
     );
   } else if (props.basket.length === 1 && props.current === 0) {
-    console.log("1 termek a kosarban, current 0");
+    console.log("1 item in the basket, current = 0");
     props.next();
     return (
       <div className="step-container step-container-2">
@@ -58,7 +53,7 @@ function Step2(props) {
       </div>
     );
   } else if (props.basket.length > 0 && props.current > 0) {
-    console.log("1 termek a kosarban, current > 1");
+    console.log("at least 1 item in the basket, current = 0");
     return (
       <div className="step-container step-container-2">
         <Basket
@@ -79,7 +74,6 @@ function Step2(props) {
 }
 
 function Step3(props) {
-  // console.log('we are at the step 3')
   if (props.current === 2) {
     setTimeout(() => {
       props.next();
@@ -89,12 +83,10 @@ function Step3(props) {
   }
   return (
     <div className="step-container step-container-3">
-      {/* to do: add bartender name instead of jonas */}
       <p>Give us some time to finish your order.</p>
       <p>
         <strong>We’ll notify you once it’s ready for pickup!</strong>
       </p>
-      {/* <p className="queue-number-text">You are number 4 in the queue</p> */}
     </div>
   );
 }

@@ -6,52 +6,32 @@ import MaskedInput from "antd-mask-input";
 import ReactCardFlip from "react-card-flip";
 import { SmileOutlined } from "@ant-design/icons";
 
-// function closePaymentModal() {
-//   console.log("closepay");
-//   document.getElementsByClassName("payment-modal")[0].classList.add("hidden");
-//   // props.next();
-// }
-
 function Paymentform(props) {
-  // const [form] = Form.useForm(); //not sure if i need this "form" thingy
-  // const onFinish = (values) => {
-  //   console.log("Received values of form: ", values);
-  // };
-
   const [name, setName] = useState("");
   const [cardnumber, setCardNumber] = useState("");
   const [expirydate, setExpiryDate] = useState("");
   const [cvv, setCVV] = useState("");
   const [isValid, setIsValid] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-
   const form = useRef(null);
 
   useEffect(() => {
     const onlynumbers = /^[0-9]+$/;
+    //valid when: it is 16 characters without spaces and only numbers
     const isCardNumberValid =
       cardnumber.replaceAll(" ", "").length === 16 && cardnumber.replaceAll(" ", "").match(onlynumbers);
+
+    //valid when: it is 4 characters without slash and only numbers
     const isExpiryDateValid =
       expirydate.replace("/", "").length === 4 && expirydate.replace("/", "").match(onlynumbers);
+    //valid when: it is 3 characters and only numbers
     const isCvvValid = cvv.length === 3 && cvv.match(onlynumbers);
     setIsValid(form.current.checkValidity() && isCardNumberValid && isExpiryDateValid && isCvvValid);
   }, [name, cardnumber, expirydate, cvv]);
 
-  // const handleOk = (schoolRollOutRequestForm) => {
-  //   //  post order to database
-  //   _postSchoolRollOutRequest(schoolRollOutRequestForm);
-  //   setVisible(false);
-  // };
-
   function handleSubmit(evt) {
     evt.preventDefault();
     setSubmitted(true);
-    // props.handlemodal();
-    // props.next();
-
-    // setInterval(() => {
-    //   props.next();
-    // }, 3000);
   }
 
   function handleClose(evt) {
@@ -75,11 +55,7 @@ function Paymentform(props) {
         className="payment-modal"
       >
         <ReactCardFlip isFlipped={submitted}>
-          {/* <div className="payment-header">
-          <h1>Payment</h1>
-          <p>Please enter your card information here</p>
-        </div> */}
-
+          {/* reactflip first element, flip from */}
           <form ref={form}>
             <div className="payment-modal-header">
               <h1>Payment</h1>
@@ -141,6 +117,7 @@ function Paymentform(props) {
               Complete payment
             </Button>
           </form>
+          {/* reactflip second element, flip to */}
           <Result
             title="Thank you!"
             subTitle="PAYMENT COMPLETED SUCCESSFULLY"
