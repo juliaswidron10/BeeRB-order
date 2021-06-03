@@ -1,6 +1,7 @@
 @use "../base/vars" as *;
 
 button {
+  width: fit-content !important;
   font-size: 0.8rem;
   text-decoration: none;
   border: 2px solid $orange;
@@ -16,6 +17,15 @@ button {
   background-color: $orange !important;
   color: $black !important;
   border: none !important;
+  border: 2px solid white;
+}
+
+.btn-yellow {
+  font-family: "Dela-Gothic-One-Regular", sans-serif;
+  background-color: $yellow !important;
+  color: $black !important;
+  border: none !important;
+  border: 2px solid white;
 }
 
 .btn-black {
@@ -25,8 +35,18 @@ button {
   border: none !important;
 }
 
-.btn-orange:hover {
-  font-family: "Dela-Gothic-One-Regular", sans-serif;
-  border: 2px solid $black;
-  background-color: $white;
+//complete payment
+
+form {
+  .ant-btn-primary {
+    font-family: "Dela-Gothic-One-Regular", sans-serif;
+    background-color: $pink;
+    color: $black;
+    border: none;
+    border: 2px solid white;
+  }
+}
+
+.ant-click-animating-node {
+  display: none !important;
 }

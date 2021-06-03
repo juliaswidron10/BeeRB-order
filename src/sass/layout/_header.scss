@@ -8,27 +8,24 @@
 
 .homepage-header {
   color: $black;
-  margin: 1rem 4rem;
+  margin: 1rem 4rem 1rem 4rem;
   h1 {
     font-family: "Dela-Gothic-One-Regular";
     font-size: 2.2rem;
+    // height: 4rem;
+  }
+
+  .logo {
+    background-image: url(../../img/foobar_logo.svg);
+    background-size: cover;
+    height: 6rem;
+    width: 13rem;
+    margin: 0 auto;
   }
 
   p {
     font-family: "Courier-Prime-Regular";
     font-size: 1rem;
-    margin: 0 4rem;
-  }
-}
-
-.info-icon-container {
-  position: absolute;
-  top: 2rem;
-  left: 2rem;
-  .info-icon {
-    background-image: url(../../img/info.svg);
-    width: 1.5rem;
-    height: 1.5rem;
-    background-size: cover;
+    margin: 0 !important;
   }
 }

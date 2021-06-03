@@ -4,73 +4,76 @@ import "antd/dist/antd.css";
 import { Button } from "antd";
 import { Store } from "./store/store";
 import { Orderpickupmodal } from "./Orderpickupmodal";
-import Basket from "./store/basket"
-
+import Basket from "./store/basket";
 
 function refreshPage() {
   window.location.reload(false);
 }
 
+// function step1next() {
+//   next();
+// }
+
 function Step1(props) {
   return (
-      <div className="step-container step-container-1">
+    <div className="step-container step-container-1">
       {/* add if statement about cart.length, if there is at least one product in the cart, add to cart */}
-      <Store 
-        beerPrices={props.beerPrices} 
-        total={props.total} 
-        beers={props.beers} 
-        basket={props.basket} 
-        addToBasket={props.addToBasket} />
-      <Button className="button btn-black" type="primary" onClick={() => props.next()}>
-        Add to cart
-      </Button>
+      <Store
+        beerPrices={props.beerPrices}
+        total={props.total}
+        beers={props.beers}
+        basket={props.basket}
+        addToBasket={props.addToBasket}
+      />
     </div>
   );
 }
-
 
 function Step2(props) {
   console.log(props.current);
   return (
     <div className="step-container step-container-2">
-      <Basket 
-        beerPrices={props.beerPrices} 
-        total={props.total} 
-        beers={props.beers} 
-        basket={props.basket} 
-        addToBasket={props.addToBasket}/>
-      
+      {/* conditional renderring */}
+      {props.current === 0 && (
+        <p className="placeholder-basket">Aren't you finding your best beer match? Ask our staff for recommendation!</p>
+      )}
       {props.current > 0 && (
-        //  to do: order comes here
-        <Button className="button btn-orange" type="primary" onClick={() => props.handlemodal()}>
-          Place order
-        </Button>
+        <div>
+          <Basket
+            beerPrices={props.beerPrices}
+            total={props.total}
+            beers={props.beers}
+            basket={props.basket}
+            addToBasket={props.addToBasket}
+          />
+          <Button className="button btn-yellow" type="primary" onClick={() => props.handlemodal()}>
+            Place order
+          </Button>
+        </div>
       )}
     </div>
   );
-
 }
 
 function Step3(props) {
   // console.log('we are at the step 3')
-   if (props.current === 2) {
+  if (props.current === 2) {
     setTimeout(() => {
       props.next();
       Orderpickupmodal();
     }, 3000);
   }
-return (
+  return (
     <div className="step-container step-container-3">
       {/* to do: add bartender name instead of jonas */}
-      <p>Give Jonas some time to finish your order.</p>
+      <p>Give us some time to finish your order.</p>
       <p>
         <strong>We’ll notify you once it’s ready for pickup!</strong>
       </p>
-      <p className="queue-number-text">You are number 4 in the queue</p>
+      {/* <p className="queue-number-text">You are number 4 in the queue</p> */}
     </div>
   );
 }
-
 
 function Step4(props) {
   if (props.current === 3) {
@@ -83,7 +86,7 @@ function Step4(props) {
       {props.current > 2 && (
         <div>
           <p>
-            You can now pickup your order at the bar! <br></br>Just tell Jonas your order ID.
+            You can now pickup your order at the bar! <br></br>Just show your order ID.
           </p>{" "}
           <p className="queue-number-text">Order id: #</p>
         </div>
@@ -96,7 +99,7 @@ function Step5(props) {
   return (
     <div className="step-container step-container-4">
       {props.current > 3 && (
-        <Button className="button btn-orange" type="primary" onClick={refreshPage}>
+        <Button className="button btn-yellow" type="primary" onClick={refreshPage}>
           Order again
         </Button>
       )}

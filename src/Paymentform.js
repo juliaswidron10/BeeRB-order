@@ -90,6 +90,17 @@ function Paymentform(props) {
             </div>
             <div className="payment-grid">
               <div className="form-layout div1">
+                <label htmlFor="cardnumber">Card number</label>
+                <MaskedInput
+                  mask="1111 1111 1111 1111"
+                  value={cardnumber}
+                  className="ant-input"
+                  onChange={(e) => setCardNumber(e.target.value)}
+                  required
+                />
+              </div>
+
+              <div className="form-layout div2">
                 <label htmlFor="name">Cardholder's name</label>
                 <Input
                   id="name"
@@ -99,17 +110,6 @@ function Paymentform(props) {
                   maxLength="26"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                />
-              </div>
-
-              <div className="form-layout div2">
-                <label htmlFor="cardnumber">Card number</label>
-                <MaskedInput
-                  mask="1111 1111 1111 1111"
-                  value={cardnumber}
-                  className="ant-input"
-                  onChange={(e) => setCardNumber(e.target.value)}
-                  required
                 />
               </div>
 
@@ -134,20 +134,26 @@ function Paymentform(props) {
                 />
               </div>
             </div>
-            <Button className="div5" type="primary" htmlType="submit" disabled={!isValid} onClick={handleSubmit}>
+            <Button
+              className="completePaymentbutton"
+              type="primary"
+              htmlType="submit"
+              disabled={!isValid}
+              onClick={handleSubmit}
+            >
               Complete payment
             </Button>
           </form>
           <Result
-            title="Your order is on the way!"
-            subTitle="Order number: 2017182818828182881"
+            title="Thank you!"
+            subTitle="PAYMENT COMPLETED SUCCESSFULLY"
             icon={<SmileOutlined />}
             extra={[
               <div key="header" className="payment-modal-thankyou-extra">
                 <p>We'll notify you when the order is ready for pickup.</p>
               </div>,
-              <Button type="primary" key="console" onClick={handleClose}>
-                Continue
+              <Button className="btn-black" type="primary" key="console" onClick={handleClose}>
+                Back to page
               </Button>,
             ]}
           />
