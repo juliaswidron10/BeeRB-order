@@ -8,7 +8,7 @@ import { Tabs } from "antd";
 const { TabPane } = Tabs;
 
 function callback(key) {
-  console.log(key);
+  // console.log(key);
 }
 const { Meta } = Card;
 

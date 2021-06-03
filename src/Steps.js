@@ -25,18 +25,18 @@ function Step1(props) {
 }
 
 function Step2(props) {
-  console.log(`current number:` + props.current);
-  console.log(`number of items in the basket:` + props.basket.length);
+  // console.log(`current number:` + props.current);
+  // console.log(`number of items in the basket:` + props.basket.length);
 
   if (props.basket.length === 0) {
-    console.log("0 items in the basket");
+    // console.log("0 items in the basket");
     return (
       <div className="step-container step-container-2">
         <p className="placeholder-basket">Aren't you finding your best beer match? Ask our staff for recommendation!</p>
       </div>
     );
   } else if (props.basket.length === 1 && props.current === 0) {
-    console.log("1 item in the basket, current = 0");
+    // console.log("1 item in the basket, current = 0");
     props.next();
     return (
       <div className="step-container step-container-2">
@@ -53,7 +53,7 @@ function Step2(props) {
       </div>
     );
   } else if (props.basket.length > 0 && props.current > 0) {
-    console.log("at least 1 item in the basket, current = 0");
+    // console.log("at least 1 item in the basket, current = 0");
     return (
       <div className="step-container step-container-2">
         <Basket

@@ -143,7 +143,7 @@ function Orderflow() {
     let itemsOrdered = 0;
     setTotal(
       basket.forEach((item) => {
-        console.log(item.amount);
+        // console.log(item.amount);
         itemsOrdered = itemsOrdered + item.amount;
       })
     );
@@ -160,12 +160,12 @@ function Orderflow() {
   }
 
   const handlemodal = () => {
-    console.log("handlmodal1");
+    // console.log("handlmodal1");
     setVisible(!visible);
   };
 
   const handlemodal2 = () => {
-    console.log("handlmodal22222");
+    // console.log("handlmodal22222");
     setVisible2(!visible2);
   };
 
@@ -174,7 +174,7 @@ function Orderflow() {
     const data = basket.map((item) => {
       return { name: item.name, amount: item.amount };
     });
-    console.log(data);
+    // console.log(data);
 
     const postData = JSON.stringify(data);
     fetch("https://beerb.herokuapp.com/order", {
@@ -187,7 +187,7 @@ function Orderflow() {
       .then((res) => res.json())
       .then((res) => {
         if (res.message === "added") {
-          console.log(res);
+          // console.log(res);
           // setOrderNumber(res.id);
           setBasket([]);
         }
