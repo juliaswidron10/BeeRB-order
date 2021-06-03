@@ -13,24 +13,6 @@ function callback(key) {
 const { Meta } = Card;
 
 export default function Beer(props) {
-  // const [activeBeers, setActive] = useState([])
-
-  // useEffect(() => {
-  //   setInterval(() =>{
-  //     fetch(`https://beerb-exam.herokuapp.com/`)
-  //       .then(response => response.json())
-  //       .then(data => setActive(data.taps)); }
-  //     , 1000)} ,[]);
-  //     // console.log(activeBeers);
-
-  // function getactive(){
-  //   activeBeers.map(e =>{
-  //   if(e.beer === props.name) {
-  //     return 'activeBeers'
-  //   }else{
-  //     return 'notactiveBeers'
-  //   }})
-  // }
  
   const [amount, setAmount] = useState(0);
   function handleminus(evt) {

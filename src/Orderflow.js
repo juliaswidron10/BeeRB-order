@@ -6,7 +6,7 @@ import { Header } from "./Header.js";
 import { Step1, Step2, Step3, Step4, Step5 } from "./Steps.js";
 import { Paymentform } from "./Paymentform.js";
 // import { Orderpickupmodal } from "./Orderpickupmodal";
-import { Beermodal } from "./Beermodal.js";
+
 import { useState, useEffect } from "react";
 
 const { Step } = Steps;
@@ -154,35 +154,6 @@ function Orderflow() {
     setCurrent(nextStep);
   }
 
-  // post order here:
-  // https://beerb-exam.herokuapp.com/order
-
-  // function post() {
-  //   const dataToPost = basket.map((item) => {
-  //     return { name: item.name, amount: item.amount };
-  //   });
-  //   console.log(dataToPost);
-
-  //   const postData = JSON.stringify(dataToPost);
-  //   fetch("https://beerb-exam.herokuapp.com/order", {
-  //     method: "post",
-  //     body: postData,
-  //     headers: {
-  //       "Content-Type": "application/json; charset=utf-8",
-  //     },
-  //   })
-  //     .then((res) => res.json())
-  //     .then((res) => {
-  //       if (res.message === "added") {
-  //         console.log(res);
-  //         setOrderNumber(res.id);
-  //         setCart([]);
-  //       }
-  //     });
-  // }
-
-  // post();
-
   const handlemodal = () => {
     console.log("handlmodal1");
     setVisible(!visible);
@@ -196,7 +167,7 @@ function Orderflow() {
   return (
     <div className="orderflow">
       <Header />
-      {visible2 === true && <Beermodal handlemodal2={handlemodal2} visible2={visible2} />}
+      {/* {visible2 === true && <Beermodal handlemodal2={handlemodal2} visible2={visible2} />} */}
       {visible === true && <Paymentform handlemodal={handlemodal} visible={visible} next={next} />}
       <Steps current={current}>
         {steps.map((item) => (
@@ -223,11 +194,6 @@ function Orderflow() {
             Done
           </Button>
         )}
-        {/* {current > 0 && (
-          <Button style={{ margin: "0 8px" }} onClick={() => prev()}>
-            Previous
-          </Button>
-        )} */}
       </div>
     </div>
   );

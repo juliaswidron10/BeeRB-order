@@ -16,10 +16,8 @@ export default function Inventory(props) {
     data.forEach(e =>{
       let inArray = newActive.includes(e.beer);
       if(inArray){
-        console.log("WHYYYYY");
       }else{
        newActive.push(e.beer);
-       console.log(newActive)
        setActive(newActive)
       }
     })

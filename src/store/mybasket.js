@@ -30,8 +30,6 @@ export default function MyBasket(props) {
     </section>
   );
 }
-//<CartItem name={item.name} amount={item.amount} />
-//<CartItem {...item} />
 
 function CartItem(props) {
   const [amount, setAmount] = useState(props.amount);
