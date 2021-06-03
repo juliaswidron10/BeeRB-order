@@ -1,170 +1,273 @@
 @use "../base/vars" as *;
 
-.beerimg{
-    height: 100px;
-    width: auto;
+// styling store - beercards
+.ant-card-bordered {
+  width: 100% !important;
+  border: none !important;
 }
 
-.beer-add{
+.ant-card {
+  .ant-card-body {
+    padding: 15px 0px 20px 0px;
+  }
+  .ant-card-meta-title {
+    font-family: "Courier-Prime-Bold";
+    font-size: 1rem;
+    margin-bottom: 0;
+  }
+  .ant-card-meta-description {
+    font-family: "Courier-Prime-Regular";
+    font-size: 0.9rem;
+  }
+
+  .store-item-price {
+    font-family: "Dela-Gothic-One-Regular";
+    font-size: 1.1rem;
+    margin: 1rem 0;
+  }
+
+  .beer-add {
     display: flex;
-    width: 100%;
+    width: 60%;
     justify-content: space-around;
     align-content: center;
-    // margin: .2rem;
+    margin: 0 auto;
     padding-top: 1rem;
+  }
 }
-.beer-add > h1{
-    line-height: 1rem;
+
+.beer-add {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-content: center;
+  // margin: .2rem;
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+  h1 {
+    border: 1px solid $black;
+    padding: 0rem 0.8rem;
+    margin: 0rem 0.4rem;
+    font-size: 1rem;
+  }
+  // button {
+  //   margin-left: 2rem;
+  // }
 }
-.beer-button{
-    width: 95px;
-    font-size: 11px;
+.beer-add > h1 {
+  line-height: 1rem;
 }
-.inventory-container{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    align-items: space-between;
+.beer-button {
+  width: 95px;
+  font-size: 11px;
 }
-.inventory-container > div{
-    padding-top: 2rem;
+.inventory-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  justify-content: space-between;
+  grid-gap: 1rem;
 }
+// .inventory-container > div {
+//   padding-top: 2rem;
+// }
 
 //STYLING MODAL WITH BEERS DETAILS
-.beersdetailsmodal{
-    width: 90vw !important;
-    margin-left: 5vw;
-    font-family: "Courier-Prime-Regular";
-    // display: flex !important ;
-    // flex-direction: row !important;
-    // justify-items: center;
-    // grid-template-columns: 1fr 3fr ;
-    // grid-template-rows: 1fr 1fr 1fr;
-}
-.beer-details-heading{
-    padding: 2rem;
-    margin: 0 2rem;
-    display: flex;   
-    width: 90%;
-    height: 4rem;
-    border-bottom: 2px solid black ;
-}
+.beersdetailsmodal {
+  width: 80vw !important;
+  margin-left: 5vw;
+  font-family: "Courier-Prime-Regular";
 
-.beer-details-heading > div{
-    padding-left: 2rem;
-    display: flex;
-    flex-direction: column;
-    margin-left: auto;
-}
-.beer-details-heading > div > h2{
-    margin: 0;
-    padding: 0;
-}
-.ant-modal-body{
-    display: flex;
+  img {
+    width: 24vw;
+    margin-top: 2.5rem;
+  }
 
-}
-.ant-modal-header , .ant-modal-footer{
+  .ant-modal-body {
+    display: flex;
+  }
+  .ant-modal-header,
+  .ant-modal-footer {
     display: none;
+  }
+
+  .addingtobasket {
+    margin-bottom: 2rem;
+    .anticon-minus-circle,
+    .anticon-plus-circle {
+      svg {
+        background: $pink;
+        border-radius: 50%;
+      }
+    }
+    h1 {
+      font-family: "Courier-Prime-Regular";
+      border: 2px solid $pink;
+      padding: 0rem 0.8rem;
+      margin: 0rem 0.4rem;
+      font-size: 1rem;
+    }
+    button {
+      margin-left: 2rem;
+    }
+  }
 }
-.beersdetailsmodal > aside{
-    // align-self: center;
-    width: 24vw;
-    margin: 4rem 2rem;
-    height: 100%;
-}
-.beersdetailsmodal img{
-    width: 24vw;
-    margin-top: 4rem;
-    // grid-area: 1 / 1 ;
+.beer-details-heading {
+  padding: 2rem;
+  margin: 0 2rem;
+  display: flex;
+  width: 80%;
+  height: 4rem;
+  border-bottom: 2px solid black;
+  font-family: "Dela-Gothic-One-Regular";
+  h1 {
+    font-size: 1.3rem;
+    margin-top: -0.4rem;
+    width: 50%;
+  }
+
+  h2 {
+    text-align: right;
+    font-size: 0.7rem;
+    margin: 0.5rem 0;
+  }
 }
 
-.addingtobasket{
-    margin: 2rem 2rem 0rem 3rem;
-    display: flex;
-    align-content: center;
+.beer-details-heading > div {
+  padding-left: 2rem;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
 }
-.addingtobasket button{
-    margin-right: 2rem;
-}
-.butt-add{
-    padding: .7rem;
+.beer-details-heading > div > h2 {
 }
 
-.beerInfo{
-    margin: 0rem 3rem;
+.beersdetailsmodal > aside {
+  // align-self: center;
+  width: 24vw;
+  margin: 4rem 2rem;
+  height: 100%;
 }
-.beerInfo h1, .ant-tabs-nav-list {
-    font-family: "Courier-Prime-Bold" ;
-    text-transform: uppercase;
-    margin: 0;
-    font-size: 1.2rem;
+
+.addingtobasket {
+  margin: 2rem 2rem 0rem 3rem;
+  display: flex;
+  align-content: center;
 }
-.beerInfo .ant-tabs-nav-list{
-    display: flex;
-    list-style: none;
-    justify-content: space-between;
-    margin: 2rem 0rem 1rem 0rem;
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
-    cursor: pointer;
-    width: 100%;
+.addingtobasket button {
+  margin-right: 2rem;
+}
+.butt-add {
+  padding: 0.7rem;
+}
+
+.beerInfo {
+  margin: 0rem 3rem;
+  p {
+    margin-top: 0.5rem;
+  }
+}
+.beerInfo h1,
+.ant-tabs-nav-list {
+  font-family: "Dela-Gothic-One-Regular";
+  text-transform: uppercase;
+  margin: 0;
+  font-size: 1.1rem;
+}
+.beerInfo .ant-tabs-nav-list {
+  display: flex;
+  list-style: none;
+  justify-content: space-between;
+  margin: 0.7rem 0rem 1rem 0rem;
+  //   border-top: 2px solid black;
+  //   border-bottom: 2px solid black;
+  cursor: pointer;
+  width: 100%;
+}
+
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: $black !important;
+}
+
+.ant-tabs-nav-wrap {
+  border-bottom: 2px solid white;
 }
 
 //STYLING BASKET
-.MyBasket ul{
-    list-style: none;
-    margin: 0 !important; 
-    padding: 0;
+.MyBasket ul {
+  list-style: none;
+  margin: 0 !important;
+  padding: 0;
+  display: grid;
+  grid-gap: 1rem;
 }
-// .MyBasket .basket-display{
-// }
-.MyBasket .beer-add{
+
+.MyBasket h1 {
+  font-size: 1rem;
+  width: 7rem;
+  line-height: 50px;
+}
+
+.basket-display {
+  display: inline-grid;
+  grid-template-columns: 0.7fr 1.4fr 1fr 1fr;
+  background-color: $light-grey;
+  border-radius: 3px;
+  padding: 5px 10px 5px 5px;
+  img {
+    height: 50px;
+    width: auto;
+    border-radius: 3px;
+  }
+  .localtotalprice-basket {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-family: "Dela-Gothic-One-Regular" !important;
+  }
+
+  .itemname-basket {
+    display: flex;
+    align-items: center;
+    font-family: "Courier-Prime-Regular";
+    text-align: left;
+  }
+
+  .beer-add {
     padding: 0;
     margin: 0;
     height: 50px;
     align-items: center;
     width: 60px;
-   
+    font-family: "Courier-Prime-Regular";
+    .anticon-minus-circle,
+    .anticon-plus-circle {
+      background: $pink;
+      border-radius: 50%;
+    }
+    p {
+      border: 2px solid $pink;
+      padding: 0rem 0.8rem;
+      margin: 0rem 0.4rem;
+      font-size: 1rem;
+    }
+  }
 }
-.MyBasket h1{
-    font-size: 1rem;
-    width: 7rem;
-    line-height: 50px;
-}
-.step-container-2 p{
-    font-size: 1.4rem;
-    font-family: "Courier-Prime-Bold" ;
-    line-height: 60px;
-    padding: 0;
-    margin: 0;
-}
-.basket-display{
-    display: flex;
-    justify-content: space-between;
-    background-color: $light-grey;
-    border-radius: 3px;
-    margin-top: 0.4rem;
-}
-.basket-display img{
-    height: 50px;
-    width: auto;
-    border-radius: 6px;
-}
-.step-container.step-container-2{
-    padding:2rem 1rem 0 0 ;
-}
-
 //Styling total basket
-.total-basket{
-    border-top: 2px solid black;
-    display: flex;
-    font-family: "Courier-Prime-Bold";
-    justify-content: space-between;
-    line-height: 1.5rem;
-    margin: 3rem 0;
-}
-.total-basket h2{
-   margin: 0 1rem 0 0;
+.total-basket {
+  border-top: 2px solid black;
+  display: flex;
+  font-family: "Courier-Prime-Bold";
+  justify-content: space-between;
+  line-height: 1.5rem;
+  margin: 1rem 0;
+
+  h2 {
+    margin-top: 10px;
+  }
+
+  .totalamount-basket {
+    font-family: "Dela-Gothic-One-Regular" !important;
+  }
 }
 
 // .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn{
@@ -175,6 +278,6 @@
 // .beer-inventory{
 
 // }
-.notactiveBeers{
-   opacity: 20%;
+.notactiveBeers {
+  opacity: 20%;
 }

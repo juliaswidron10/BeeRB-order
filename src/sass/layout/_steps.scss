@@ -2,7 +2,7 @@
 
 .steps-content-container {
   display: inline-grid !important;
-  grid-template-columns: 2.2fr 0.8fr 1fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
   width: 200% !important;
   margin-top: 3rem;
 }
@@ -17,10 +17,11 @@
 }
 
 .step-container {
-  padding: 2rem 3rem;
+  padding: 0rem 3rem 2rem 3rem;
 }
 
 .step-container-1 {
+  padding: 0rem 3rem 2rem 3rem;
   h1 {
     display: flex;
     align-self: flex-start;
@@ -28,15 +29,21 @@
 }
 
 .step-container-2 {
+  padding: 0rem;
+  padding-right: 1.5rem;
   h1 {
     display: flex;
     align-self: flex-start;
   }
 
-  p {
+  .placeholder-basket {
     font-family: "Courier-Prime-Italic";
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     text-align: left;
+  }
+
+  .btn-yellow {
+    float: right;
   }
 }
 

@@ -25,9 +25,6 @@ function Step1(props) {
         basket={props.basket}
         addToBasket={props.addToBasket}
       />
-      <Button className="button btn-black" type="primary" onClick={() => props.next()}>
-        Add to cart
-      </Button>
     </div>
   );
 }
@@ -36,19 +33,23 @@ function Step2(props) {
   console.log(props.current);
   return (
     <div className="step-container step-container-2">
-      <Basket
-        beerPrices={props.beerPrices}
-        total={props.total}
-        beers={props.beers}
-        basket={props.basket}
-        addToBasket={props.addToBasket}
-      />
-
+      {/* conditional renderring */}
+      {props.current === 0 && (
+        <p className="placeholder-basket">Aren't you finding your best beer match? Ask our staff for recommendation!</p>
+      )}
       {props.current > 0 && (
-        //  to do: order comes here
-        <Button className="button btn-orange" type="primary" onClick={() => props.handlemodal()}>
-          Place order
-        </Button>
+        <div>
+          <Basket
+            beerPrices={props.beerPrices}
+            total={props.total}
+            beers={props.beers}
+            basket={props.basket}
+            addToBasket={props.addToBasket}
+          />
+          <Button className="button btn-yellow" type="primary" onClick={() => props.handlemodal()}>
+            Place order
+          </Button>
+        </div>
       )}
     </div>
   );

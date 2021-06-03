@@ -150,13 +150,6 @@ function Orderflow() {
     setCurrent(nextStep);
   }
 
-  const handlemodal2 = () => {
-    setVisible2(!visible2);
-  };
-
-  const [visible, setVisible] = useState(false);
-  const [visible2, setVisible2] = useState(false);
-
   const handlemodal = () => {
     console.log("handlmodal1");
     setVisible(!visible);
