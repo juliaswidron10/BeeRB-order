@@ -27,7 +27,7 @@ export default function Inventory(props) {
     <main className="inventory-container">
       {/* {props.products.length === 0 && <Loader />} */}
       {props.beers.map((item) => (
-               activeBeers.map(e =>{
+               activeBeers.forEach(e =>{
                   if(e === item.name) {
                     return <Beer 
                       addToBasket={props.addToBasket} 
