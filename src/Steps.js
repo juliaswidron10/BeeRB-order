@@ -78,7 +78,6 @@ function Step2(props) {
 }
 
 function Step3(props) {
-  // props.post();
   // console.log('we are at the step 3')
   if (props.current === 2) {
     setTimeout(() => {

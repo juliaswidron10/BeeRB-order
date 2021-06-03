@@ -110,7 +110,7 @@ function Orderflow() {
   // const [start, setStart] = useState(0);
 
   useEffect(() => {
-    fetch(`https://beerb-exam.herokuapp.com/beertypes`)
+    fetch(`https://git.heroku.com/beerb-exam.git/beertypes`)
       .then((res) => res.json())
       .then(setBeers);
   }, []);
