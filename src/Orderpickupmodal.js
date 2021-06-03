@@ -26,6 +26,7 @@ function Orderpickupmodal(props) {
   }, 1000);
   setTimeout(() => {
     clearInterval(timer);
+    // the modal disappears after 5 seconds
     modal.destroy();
   }, secondsToGo * 1000);
 }
