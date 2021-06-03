@@ -11,50 +11,97 @@ import { useState, useEffect } from "react";
 
 const { Step } = Steps;
 
-
 const steps = [
   {
     step: 1,
     title: "Select your beer",
 
     current: 0,
-    content: (total, basket, beers, addToBasket, next, current, handlemodal, handlemodal2) => <Step1 total={total} basket={basket} beers={beers} addToBasket={addToBasket} next={next} current={current} handlemodal={handlemodal}  handlemodal2={handlemodal2} />,
-
+    content: (total, basket, beers, addToBasket, next, current, handlemodal, handlemodal2) => (
+      <Step1
+        total={total}
+        basket={basket}
+        beers={beers}
+        addToBasket={addToBasket}
+        next={next}
+        current={current}
+        handlemodal={handlemodal}
+        handlemodal2={handlemodal2}
+      />
+    ),
   },
   {
     step: 2,
     title: "Place your order",
     current: 1,
-    content:(total, basket, beers, addToBasket, next, current, handlemodal, handlemodal2) => <Step2 total={total} basket={basket} beers={beers} addToBasket={addToBasket} next={next} current={current} handlemodal={handlemodal}  handlemodal2={handlemodal2}/>,
+    content: (total, basket, beers, addToBasket, next, current, handlemodal, handlemodal2) => (
+      <Step2
+        total={total}
+        basket={basket}
+        beers={beers}
+        addToBasket={addToBasket}
+        next={next}
+        current={current}
+        handlemodal={handlemodal}
+        handlemodal2={handlemodal2}
+      />
+    ),
   },
   {
     step: 3,
     title: "A bit of a patience",
     current: 2,
-    content: (total, basket, beers, addToBasket, next, current, handlemodal, handlemodal2) => <Step3 total={total} basket={basket} beers={beers} addToBasket={addToBasket} next={next} current={current}  handlemodal2={handlemodal2} />,
+    content: (total, basket, beers, addToBasket, next, current, handlemodal, handlemodal2) => (
+      <Step3
+        total={total}
+        basket={basket}
+        beers={beers}
+        addToBasket={addToBasket}
+        next={next}
+        current={current}
+        handlemodal2={handlemodal2}
+      />
+    ),
   },
   {
     step: 4,
     title: "Pick up your order ",
     current: 3,
-    content: (total, basket, beers, addToBasket, next, current, handlemodal, handlemodal2) => <Step4 total={total} basket={basket} beers={beers} addToBasket={addToBasket} next={next} current={current}  handlemodal2={handlemodal2} />,
+    content: (total, basket, beers, addToBasket, next, current, handlemodal, handlemodal2) => (
+      <Step4
+        total={total}
+        basket={basket}
+        beers={beers}
+        addToBasket={addToBasket}
+        next={next}
+        current={current}
+        handlemodal2={handlemodal2}
+      />
+    ),
   },
   {
     step: 5,
     title: "Enjoy and repeat!",
     current: 4,
-    content: (total, basket, beers, addToBasket, next, current, handlemodal, handlemodal2)  => <Step5 total={total} basket={basket} beers={beers} addToBasket={addToBasket} next={next} current={current}  handlemodal2={handlemodal2} />,
+    content: (total, basket, beers, addToBasket, next, current, handlemodal, handlemodal2) => (
+      <Step5
+        total={total}
+        basket={basket}
+        beers={beers}
+        addToBasket={addToBasket}
+        next={next}
+        current={current}
+        handlemodal2={handlemodal2}
+      />
+    ),
   },
-];  
-
-
+];
 
 function Orderflow() {
   const [current, setCurrent] = useState(0);
   const [visible, setVisible] = useState(false);
   const [visible2, setVisible2] = useState(false);
   const [beers, setBeers] = useState([]);
-  
 
   // const [start, setStart] = useState(0);
 
@@ -62,14 +109,14 @@ function Orderflow() {
     fetch(`https://beerb-exam.herokuapp.com/beertypes`)
       .then((res) => res.json())
       .then(setBeers);
-  },[]);
+  }, []);
 
   const [basket, setBasket] = useState([]);
-  function addToBasket(payload, amount=1) {
+  function addToBasket(payload, amount = 1) {
     const inBasket = basket.findIndex((item) => item.name === payload.name);
     if (inBasket === -1) {
       const nextPayload = { ...payload };
-      nextPayload.amount = amount ;
+      nextPayload.amount = amount;
       setBasket((prevState) => [...prevState, nextPayload]);
       updateTotal();
     } else {
@@ -81,52 +128,60 @@ function Orderflow() {
       });
       setBasket(newBasket);
       updateTotal();
-    };
-  } 
-
+    }
+  }
 
   const [total, setTotal] = useState(0);
   function updateTotal() {
-    
-    let itemsOrdered = 0
-    setTotal(basket.forEach((item)=>{
-      console.log(item.amount)
-      itemsOrdered = itemsOrdered + item.amount;
-    }))
+    let itemsOrdered = 0;
+    setTotal(
+      basket.forEach((item) => {
+        console.log(item.amount);
+        itemsOrdered = itemsOrdered + item.amount;
+      })
+    );
     let newTotal = itemsOrdered * 75;
-    setTotal(newTotal)
+    setTotal(newTotal);
     // return newTotal
   }
   function next() {
-      console.log("next clicked");
-      const nextStep = current + 1;
-      setCurrent(nextStep);
+    console.log("next clicked");
+    const nextStep = current + 1;
+    setCurrent(nextStep);
   }
 
   const handlemodal2 = () => {
     setVisible2(!visible2);
   };
 
+  const [visible, setVisible] = useState(false);
+  const [visible2, setVisible2] = useState(false);
+
   const handlemodal = () => {
+    console.log("handlmodal1");
     setVisible(!visible);
   };
 
+  const handlemodal2 = () => {
+    console.log("handlmodal22222");
+    setVisible2(!visible2);
+  };
+
   return (
-    // don't forget to add hidden class to orderflow
     <div className="orderflow">
       <Header />
-        {visible2 === true && <Beermodal handlemodal2={handlemodal2} visible2={visible2} />}
+      {visible2 === true && <Beermodal handlemodal2={handlemodal2} visible2={visible2} />}
       {visible === true && <Paymentform handlemodal={handlemodal} visible={visible} next={next} />}
       <Steps current={current}>
         {steps.map((item) => (
-          <Step  key={item.title} title={item.title} />
+          <Step key={item.title} title={item.title} />
         ))}
       </Steps>
       <div className="steps-content-container">
         {steps.map((item) => (
           <div key={item.title} className={`steps-content ${item.step !== current + 1}`}>
             {" "}
-            {item.content(total,basket,beers, addToBasket, next, current, handlemodal, handlemodal2)}{" "}
+            {item.content(total, basket, beers, addToBasket, next, current, handlemodal, handlemodal2)}{" "}
           </div>
         ))}
       </div>
@@ -152,4 +207,4 @@ function Orderflow() {
   );
 }
 
-export {Orderflow} ;
+export { Orderflow };
