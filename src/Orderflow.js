@@ -1,5 +1,5 @@
 import React from "react";
-import { Steps, Button, message } from "antd";
+import { Steps } from "antd";
 import "./App.scss";
 import "antd/dist/antd.css";
 import { Header } from "./Header.js";
