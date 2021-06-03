@@ -17,7 +17,7 @@ export class Header1 extends React.Component {
   render() {
     return (
       <div className="homepage-header">
-        <h1>Beer selection</h1>
+        <div className="logo"></div>
         <p>Take your time to go through the selection, we are sure you’ll find something tasty!</p>
       </div>
     );

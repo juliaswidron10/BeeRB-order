@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.f980a56a.chunk.css",
+    "main.js": "/static/js/main.6fd64ed5.chunk.js",
+    "main.js.map": "/static/js/main.6fd64ed5.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.f74c7a12.js",
+    "runtime-main.js.map": "/static/js/runtime-main.f74c7a12.js.map",
+    "static/css/2.00bb4513.chunk.css": "/static/css/2.00bb4513.chunk.css",
+    "static/js/2.dc751a1e.chunk.js": "/static/js/2.dc751a1e.chunk.js",
+    "static/js/2.dc751a1e.chunk.js.map": "/static/js/2.dc751a1e.chunk.js.map",
+    "static/js/3.a6c6b36d.chunk.js": "/static/js/3.a6c6b36d.chunk.js",
+    "static/js/3.a6c6b36d.chunk.js.map": "/static/js/3.a6c6b36d.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.00bb4513.chunk.css.map": "/static/css/2.00bb4513.chunk.css.map",
+    "static/css/main.f980a56a.chunk.css.map": "/static/css/main.f980a56a.chunk.css.map",
+    "static/js/2.dc751a1e.chunk.js.LICENSE.txt": "/static/js/2.dc751a1e.chunk.js.LICENSE.txt",
+    "static/media/App.scss": "/static/media/foobar_logo.a54b9fb3.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f74c7a12.js",
+    "static/css/2.00bb4513.chunk.css",
+    "static/js/2.dc751a1e.chunk.js",
+    "static/css/main.f980a56a.chunk.css",
+    "static/js/main.6fd64ed5.chunk.js"
+  ]
+}

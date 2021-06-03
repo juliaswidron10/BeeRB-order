@@ -11,13 +11,17 @@
   h1 {
     font-family: "Courier-Prime-Bold";
   }
+  p {
+    font-family: "Courier-Prime-Regular";
+  }
+}
+
+.step-container {
+  padding: 0rem 3rem 2rem 3rem;
 }
 
 .step-container-1 {
-  padding: 2rem 3rem;
-  border-top: 3px solid $black;
-  border-right: 3px solid $black;
-
+  padding: 0rem 3rem 2rem 3rem;
   h1 {
     display: flex;
     align-self: flex-start;
@@ -25,11 +29,34 @@
 }
 
 .step-container-2 {
-  padding: 2rem 3rem;
-  border-top: 3px solid $black;
-
+  padding: 0rem;
+  padding-right: 1.5rem;
   h1 {
     display: flex;
     align-self: flex-start;
   }
+
+  .placeholder-basket {
+    font-family: "Courier-Prime-Italic";
+    font-size: 0.9rem;
+    text-align: left;
+  }
+
+  .btn-yellow {
+    float: right;
+  }
+}
+
+.step-container-3,
+.step-container-4 {
+  p {
+    font-size: 1rem;
+  }
+}
+
+.queue-number-text {
+  margin-top: 3rem;
+  font-weight: 700;
+  background: $light-grey;
+  text-transform: uppercase;
 }

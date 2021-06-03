@@ -1,6 +1,17 @@
 body {
+  width: 100%;
+  //to do: on desktop it should be 100%
+  overflow-x: hidden;
+}
+
+#root {
+  overflow-x: hidden;
 }
 
 .hidden {
   display: none;
+}
+
+p {
+  margin-bottom: 0px !important;
 }

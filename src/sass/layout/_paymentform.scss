@@ -1,0 +1,245 @@
+@use "../base/vars" as *;
+
+#complex-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ant-form-item-explain.ant-form-item-explain-error {
+  text-align: start;
+}
+
+.ant-form-item-with-help {
+  margin-bottom: 1rem;
+}
+
+.ant-modal-title {
+  display: none;
+}
+
+.ant-modal-footer {
+  display: none;
+}
+
+.ant-input {
+  border: 3px solid $black;
+}
+
+.ant-modal-header {
+  border: none !important;
+}
+
+.ant-modal-close {
+  background: $black !important;
+  border-radius: 50%;
+  margin-top: 1rem;
+  margin-right: 1rem;
+  .ant-modal-close-x {
+    width: 2rem;
+    height: 2rem;
+    align-content: center;
+    justify-content: center;
+    display: grid;
+    .anticon {
+      vertical-align: super !important;
+    }
+  }
+  svg {
+    fill: white !important;
+  }
+}
+
+.modal {
+  color: $black;
+  margin: 1rem 0rem 3rem 0rem;
+  width: 50%;
+  margin: 0 auto;
+  position: absolute;
+  top: 30%;
+  left: 25%;
+  background: white;
+  h1 {
+    font-family: "Dela-Gothic-One-Regular";
+    font-size: 1.5rem;
+    margin: 0.7rem;
+  }
+
+  p {
+    font-family: "Courier-Prime-Regular";
+    font-size: 0.7rem;
+    margin: 0 4rem;
+  }
+}
+
+.orderpickup-modal {
+  p {
+    font-size: 1rem;
+  }
+}
+
+// styling modal
+
+.ant-modal-confirm {
+  width: 50% !important;
+  text-align: center;
+
+  .anticon-check-circle {
+    display: none;
+  }
+
+  .ant-modal-confirm-title {
+    font-family: "Dela-Gothic-One-Regular";
+    font-size: 1.7rem !important;
+    margin-bottom: 0.7rem;
+  }
+
+  .ant-modal-confirm-content {
+    margin-left: 0 !important;
+
+    p {
+      font-family: "Courier-Prime-Regular";
+      font-size: 1rem;
+    }
+
+    .queue-number-text {
+      margin-top: 1rem;
+      width: fit-content;
+      margin: 0 auto;
+      font-size: 1.5rem;
+    }
+  }
+
+  .ant-btn {
+    border-radius: 50%;
+    padding: 0 10px 0 10px !important;
+    background: $black !important;
+    border: none;
+    font-family: "Gruppo";
+    font-weight: 700;
+    font-size: 1.4rem;
+    position: absolute;
+    top: 13px;
+    right: 13px;
+    height: auto !important;
+    transition: none !important;
+
+    span {
+      visibility: hidden;
+      font-size: 10px;
+    }
+
+    span:after {
+      content: "X";
+      visibility: visible;
+      position: absolute !important;
+      display: block;
+      font-size: 1.3rem;
+      top: 0 !important;
+    }
+  }
+
+  .cheers-svg-container {
+    display: flex;
+    margin-top: 2rem;
+    justify-content: center;
+    .cheers-icon {
+      background-image: url(../../img/cheers.svg);
+      width: 9rem;
+      height: 10rem;
+      background-size: cover;
+    }
+  }
+}
+
+.payment-modal {
+  .completePaymentbutton {
+    margin-top: 2rem;
+    width: 100% !important;
+  }
+
+  .payment-modal-header {
+    margin-top: -1.8em;
+    padding-bottom: 1.5rem;
+  }
+  h1 {
+    font-family: "Dela-Gothic-One-Regular";
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  p {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-family: "Courier-Prime-Regular";
+    font-size: 0.8rem;
+  }
+
+  form {
+    width: 70%;
+    margin: 0 auto;
+    .payment-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      grid-column-gap: 20px;
+      grid-row-gap: 10px;
+    }
+
+    .div1 {
+      grid-area: 1 / 1 / 2 / 4;
+    }
+    .div2 {
+      grid-area: 2 / 1 / 3 / 4;
+    }
+    .div3 {
+      grid-area: 3 / 1 / 4 / 3;
+    }
+    .div4 {
+      grid-area: 3 / 3 / 4 / 4;
+    }
+
+    .form-layout {
+    }
+
+    label {
+      font-family: "Courier-Prime-Bold";
+      font-size: 1rem;
+    }
+  }
+}
+
+// styling result page
+.ant-result {
+  padding: 0px 32px !important;
+
+  .anticon-smile {
+    color: $pink !important;
+  }
+
+  .ant-result-title {
+    font-family: "Dela-Gothic-One-Regular";
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .ant-result-subtitle {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-family: "Courier-Prime-Regular";
+    font-size: 0.8rem;
+  }
+
+  .payment-modal-thankyou-extra {
+    font-family: "Dela-Gothic-One-Regular" !important;
+    font-size: 0.8rem;
+  }
+
+  .btn-black {
+    margin-top: 3rem;
+  }
+}
