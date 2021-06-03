@@ -21,6 +21,7 @@ export const Store = (props) => {
       <Inventory 
         beerPrices={props.beerPrices} 
         total={props.total} 
+        updateTotal={props.updateTotal}
         beers={props.beers} 
         addToBasket={props.addToBasket} />
       

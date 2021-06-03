@@ -15,8 +15,9 @@ const steps = [
     title: "Select your beer",
 
     current: 0,
-    content: (total, basket, beers, addToBasket, next, current, handlemodal, handlemodal2) => (
+    content: (updateTotal, total, basket, beers, addToBasket, next, current, handlemodal, handlemodal2) => (
       <Step1
+        updateTotal={updateTotal}
         total={total}
         basket={basket}
         beers={beers}
@@ -32,8 +33,9 @@ const steps = [
     step: 2,
     title: "Place your order",
     current: 1,
-    content: (total, basket, beers, addToBasket, next, current, handlemodal, handlemodal2, post) => (
+    content: (updateTotal, total, basket, beers, addToBasket, next, current, handlemodal, handlemodal2, post) => (
       <Step2
+        updateTotal={updateTotal}
         total={total}
         basket={basket}
         beers={beers}
@@ -50,8 +52,9 @@ const steps = [
     step: 3,
     title: "A bit of a patience",
     current: 2,
-    content: (total, basket, beers, addToBasket, next, current, handlemodal, handlemodal2, post, orderNumber) => (
+    content: (updateTotal, total, basket, beers, addToBasket, next, current, handlemodal, handlemodal2, post, orderNumber) => (
       <Step3
+        updateTotal={updateTotal}
         total={total}
         basket={basket}
         beers={beers}
@@ -68,8 +71,9 @@ const steps = [
     step: 4,
     title: "Pick up your order ",
     current: 3,
-    content: (total, basket, beers, addToBasket, next, current, handlemodal, handlemodal2, post) => (
+    content: (updateTotal, total, basket, beers, addToBasket, next, current, handlemodal, handlemodal2, post) => (
       <Step4
+        updateTotal={updateTotal}
         total={total}
         basket={basket}
         beers={beers}
@@ -85,8 +89,9 @@ const steps = [
     step: 5,
     title: "Enjoy and repeat!",
     current: 4,
-    content: (total, basket, beers, addToBasket, next, current, handlemodal, handlemodal2, post) => (
+    content: (updateTotal,total, basket, beers, addToBasket, next, current, handlemodal, handlemodal2, post) => (
       <Step5
+        updateTotal={updateTotal}
         total={total}
         basket={basket}
         beers={beers}
@@ -204,6 +209,7 @@ function Orderflow() {
           <div key={item.title} className={`steps-content ${item.step !== current + 1}`}>
             {" "}
             {item.content(
+              updateTotal,
               total,
               basket,
               beers,

@@ -14,18 +14,21 @@ const { Meta } = Card;
 
 export default function Beer(props) {
   const [amount, setAmount] = useState(0);
+  
   function handleminus(evt) {
     if (amount > 0) {
       setAmount((prevState) => {
         return prevState - 1;
       });
     }
+    // props.updateTotal();
   }
 
   function handleplus(evt) {
     setAmount((prevState) => {
       return prevState + 1;
     });
+    // props.updateTotal();
   }
 
   // Modal code from entd

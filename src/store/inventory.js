@@ -35,6 +35,7 @@ export default function Inventory(props) {
                       {...item} 
                       key={item.name}
                       total={props.total}
+                      updateTotal={props.updateTotal}
                 />
                   }else{
                     return null

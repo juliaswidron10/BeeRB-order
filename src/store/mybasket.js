@@ -3,8 +3,7 @@ import { PlusCircleOutlined, MinusCircleOutlined } from "@ant-design/icons";
 import { useState } from "react";
 
 export default function MyBasket(props) {
-  //  const [total, setTotal] = useState(0);
-  //  function getTotal(amount){
+  
   //    let tot = amount * 75
   //    return tot
   //  }
@@ -41,12 +40,15 @@ function CartItem(props) {
     setlocalTotal(newTotal);
   }
   function handleminus(evt) {
+    getlocalTotal();
     if (props.amount > 0) {
       setAmount((prevState) => {
         return prevState - 1;
       });
+    } else{
+      setAmount(0)
     }
-    getlocalTotal();
+    
   }
 
   function handleplus(evt) {
