@@ -32,6 +32,7 @@ function Step1(props) {
 function Step2(props) {
   console.log(props.current);
   console.log(props.basket.length);
+  // console.log(props.orderNumber);
   if (props.basket.length === 0) {
     console.log("0 termek a kosarban");
     return (
@@ -78,12 +79,12 @@ function Step2(props) {
 }
 
 function Step3(props) {
-  // props.post();
   // console.log('we are at the step 3')
   if (props.current === 2) {
     setTimeout(() => {
       props.next();
-      Orderpickupmodal();
+      Orderpickupmodal(props);
+      props.post();
     }, 3000);
   }
   return (

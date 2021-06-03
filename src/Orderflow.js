@@ -52,7 +52,7 @@ const steps = [
     step: 3,
     title: "A bit of a patience",
     current: 2,
-    content: (total, basket, beers, addToBasket, next, current, handlemodal, handlemodal2, post) => (
+    content: (total, basket, beers, addToBasket, next, current, handlemodal, handlemodal2, post, orderNumber) => (
       <Step3
         total={total}
         basket={basket}
@@ -62,6 +62,7 @@ const steps = [
         current={current}
         handlemodal2={handlemodal2}
         post={post}
+        orderNumber={orderNumber}
       />
     ),
   },
@@ -106,11 +107,12 @@ function Orderflow() {
   const [visible, setVisible] = useState(false);
   const [visible2, setVisible2] = useState(false);
   const [beers, setBeers] = useState([]);
+  // const [orderNumber, setOrderNumber] = useState("");
 
   // const [start, setStart] = useState(0);
 
   useEffect(() => {
-    fetch(`https://beerb-exam.herokuapp.com/beertypes`)
+    fetch(`https://beerb.herokuapp.com/beertypes`)
       .then((res) => res.json())
       .then(setBeers);
   }, []);
@@ -164,6 +166,34 @@ function Orderflow() {
     setVisible2(!visible2);
   };
 
+  function post() {
+    // const data = basket;
+    // console.log(data);
+
+    const data = basket.map((item) => {
+      return { name: item.name, amount: item.amount };
+    });
+
+    console.log(data);
+
+    const postData = JSON.stringify(data);
+    fetch("https://beerb.herokuapp.com/order", {
+      method: "post",
+      body: postData,
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.message === "added") {
+          console.log(res);
+          // setOrderNumber(res.id);
+          setBasket([]);
+        }
+      });
+  }
+
   return (
     <div className="orderflow">
       <Header />
@@ -178,7 +208,18 @@ function Orderflow() {
         {steps.map((item) => (
           <div key={item.title} className={`steps-content ${item.step !== current + 1}`}>
             {" "}
-            {item.content(total, basket, beers, addToBasket, next, current, handlemodal, handlemodal2)}{" "}
+            {item.content(
+              total,
+              basket,
+              beers,
+              addToBasket,
+              next,
+              current,
+              handlemodal,
+              handlemodal2,
+              post
+              // orderNumber
+            )}{" "}
           </div>
         ))}
       </div>

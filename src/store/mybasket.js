@@ -8,7 +8,7 @@ export default function MyBasket(props) {
   //    let tot = amount * 75
   //    return tot
   //  }
-  console.log(props.basket);
+  // console.log(props.basket);
   return (
     <section className="MyBasket">
       <ul>
