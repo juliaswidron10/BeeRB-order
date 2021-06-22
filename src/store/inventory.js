@@ -1,6 +1,7 @@
 import React from "react";
 import Beer from "./beer.js";
 import { useState, useEffect } from "react";
+import Loader from './loader.js';
 
 export default function Inventory(props) {
   const [activeBeers, setActive] = useState([]);
@@ -25,8 +26,7 @@ export default function Inventory(props) {
 
   return (
     <main className="inventory-container">
-      {/* {props.products.length === 0 && <Loader />} */}
-
+      {props.beers.length === 0 && <Loader />}
       {props.beers.map((item) => (
                activeBeers.map((e) => {
                   if(e === item.name) {

@@ -5,7 +5,7 @@ import "antd/dist/antd.css";
 
 function Orderpickupmodal(props) {
   let secondsToGo = 5;
-  console.log(props.orderNumber);
+  // console.log(props.orderNumber);
   const modal = Modal.success({
     title: "Your order is ready!",
     content: (

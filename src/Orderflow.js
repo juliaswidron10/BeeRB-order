@@ -117,7 +117,11 @@ function Orderflow() {
   useEffect(() => {
     fetch(`https://beerb.herokuapp.com/beertypes`)
       .then((res) => res.json())
-      .then(setBeers);
+      .then((res)=> {
+        setTimeout(() => {
+          setBeers(res);
+        }, 3000);
+        });
   }, []);
 
   function addToBasket(payload, amount = 1) {
