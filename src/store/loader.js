@@ -3,19 +3,19 @@ import React from "react";
 export default function Loader(props) {
 
   return (
-      <div class="containerloader" style={{
-                                        background:`url('${process.env.PUBLIC_URL}/beers/texture.png')`,
+      <div className="containerloader" style={{
+                                        // background:`url('${process.env.PUBLIC_URL}/beers/texture.png')`,
                                         backgroundSize: `100% 100%`,
                                         objectFit: "cover"
                                         
                                         }}>
        
-        <div class="loader" >
-            <div class="circle" id="a"></div>
-            <div class="circle" id="b"></div>
-            <div class="circle" id="c"></div>
-            <div class="circle" id="d"></div>
-            <div class="circle" id="e"></div>
+        <div className="loader" >
+            <div className="circle" id="a"></div>
+            <div className="circle" id="b"></div>
+            <div className="circle" id="c"></div>
+            <div className="circle" id="d"></div>
+            <div className="circle" id="e"></div>
         </div>
        
      </div>

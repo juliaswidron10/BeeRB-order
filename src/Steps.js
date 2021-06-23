@@ -19,6 +19,7 @@ function Step1(props) {
         beers={props.beers}
         basket={props.basket}
         addToBasket={props.addToBasket}
+        currentOrders = {props.currentOrders}
       />
     </div>
   );
@@ -77,7 +78,7 @@ function Step3(props) {
   if (props.current === 2) {
     setTimeout(() => {
       props.next();
-      Orderpickupmodal(props);
+      Orderpickupmodal(props.currentOrders);
       props.post();
     }, 3000);
   }
@@ -86,6 +87,7 @@ function Step3(props) {
       <p>Give us some time to finish your order.</p>
       <p>
         <strong>We’ll notify you once it’s ready for pickup!</strong>
+        
       </p>
     </div>
   );
@@ -104,7 +106,7 @@ function Step4(props) {
           <p>
             You can now pickup your order at the bar! <br></br>Just show your order ID.
           </p>{" "}
-          <p className="queue-number-text">Order id: #</p>
+          <p className="queue-number-text">Order id: #{props.currentOrders}</p>
         </div>
       )}
     </div>

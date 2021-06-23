@@ -15,9 +15,10 @@ const steps = [
     title: "Select your beer",
 
     current: 0,
-    content: (updateTotal, total, basket, beers, addToBasket, next, current, handlemodal, handlemodal2) => (
+    content: (updateTotal, currentOrders, total, basket, beers, addToBasket, next, current, handlemodal, handlemodal2) => (
       <Step1
         updateTotal={updateTotal}
+        currentOrders={currentOrders}
         total={total}
         basket={basket}
         beers={beers}
@@ -33,9 +34,10 @@ const steps = [
     step: 2,
     title: "Place your order",
     current: 1,
-    content: (updateTotal, total, basket, beers, addToBasket, next, current, handlemodal, handlemodal2, post) => (
+    content: (updateTotal, currentOrders, total, basket, beers, addToBasket, next, current, handlemodal, handlemodal2, post) => (
       <Step2
         updateTotal={updateTotal}
+        currentOrders={currentOrders}
         total={total}
         basket={basket}
         beers={beers}
@@ -52,9 +54,10 @@ const steps = [
     step: 3,
     title: "A bit of a patience",
     current: 2,
-    content: (updateTotal, total, basket, beers, addToBasket, next, current, handlemodal, handlemodal2, post, orderNumber) => (
+    content: (updateTotal, currentOrders, total, basket, beers, addToBasket, next, current, handlemodal, handlemodal2, post, orderNumber) => (
       <Step3
         updateTotal={updateTotal}
+        currentOrders={currentOrders}
         total={total}
         basket={basket}
         beers={beers}
@@ -71,9 +74,10 @@ const steps = [
     step: 4,
     title: "Pick up your order ",
     current: 3,
-    content: (updateTotal, total, basket, beers, addToBasket, next, current, handlemodal, handlemodal2, post) => (
+    content: (updateTotal, currentOrders, total, basket, beers, addToBasket, next, current, handlemodal, handlemodal2, post) => (
       <Step4
         updateTotal={updateTotal}
+        currentOrders={currentOrders}
         total={total}
         basket={basket}
         beers={beers}
@@ -89,9 +93,10 @@ const steps = [
     step: 5,
     title: "Enjoy and repeat!",
     current: 4,
-    content: (updateTotal,total, basket, beers, addToBasket, next, current, handlemodal, handlemodal2, post) => (
+    content: (updateTotal,total,currentOrders, basket, beers, addToBasket, next, current, handlemodal, handlemodal2, post) => (
       <Step5
         updateTotal={updateTotal}
+        currentOrders={currentOrders}
         total={total}
         basket={basket}
         beers={beers}
@@ -112,8 +117,12 @@ function Orderflow() {
   const [beers, setBeers] = useState([]);
   const [basket, setBasket] = useState([]);
   const [total, setTotal] = useState(0);
+  const [currentOrders, setCurrentOrders ] = useState([]);
   // const [orderNumber, setOrderNumber] = useState("");
-
+  function next() {
+    const nextStep = current + 1;
+    setCurrent(nextStep);
+  }
   useEffect(() => {
     fetch(`https://beerb.herokuapp.com/beertypes`)
       .then((res) => res.json())
@@ -156,12 +165,7 @@ function Orderflow() {
     // return newTotal
   }
 
-  function next() {
-    //takes you to the next step
-    // console.log("next clicked");
-    const nextStep = current + 1;
-    setCurrent(nextStep);
-  }
+
 
   const handlemodal = () => {
     // console.log("handlmodal1");
@@ -172,6 +176,27 @@ function Orderflow() {
     // console.log("handlmodal22222");
     setVisible2(!visible2);
   };
+
+  
+
+  function updateOrders(data){
+    let queue = data.queue;
+    // let serving = data.serving;
+    console.log(queue)
+    let currentQueue = [ ...queue];
+    let currentdisplay = currentQueue[currentQueue.length -1].id;
+    console.log(currentdisplay)
+    setCurrentOrders(currentdisplay);
+  }
+
+
+  function getOrderStatus(){
+    console.log('Lets check if i can make this work');
+      fetch(`https://beerb.herokuapp.com/`)
+      .then((response) => response.json())
+      .then((data) => updateOrders(data));
+    
+  }
 
   function post() {
     // post content of basket to heroku database
@@ -194,6 +219,7 @@ function Orderflow() {
           // console.log(res);
           // setOrderNumber(res.id);
           setBasket([]);
+          getOrderStatus();
         }
       });
   }
@@ -202,7 +228,7 @@ function Orderflow() {
     <div className="orderflow">
       <Header />
       {/* conditional rendering */}
-      {visible === true && <Paymentform handlemodal={handlemodal} visible={visible} next={next} />}
+      {visible === true && <Paymentform handlemodal={handlemodal} currentOrders={currentOrders} visible={visible} next={next} />}
       <Steps current={current}>
         {steps.map((item) => (
           <Step key={item.title} title={item.title} />
@@ -214,6 +240,7 @@ function Orderflow() {
             {" "}
             {item.content(
               updateTotal,
+              currentOrders,
               total,
               basket,
               beers,
